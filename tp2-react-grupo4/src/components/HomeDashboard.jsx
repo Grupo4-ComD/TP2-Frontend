@@ -3,10 +3,10 @@ import './HomeDashboard.css'; // Importamos los estilos y animaciones
 
 // Arreglo con los datos del equipo (Aquí pondrán las rutas de sus avatares/IA)
 const teamMembers = [
-  { id: 'guillermo', name: 'Guillermo Sciulli', role: 'Desarrollador Web', avatar: '/img/avatar-guille.jpg' },
-  { id: 'braian', name: 'Braian', role: 'Desarrollador Web', avatar: '/img/avatar-braian.jpg' },
-  { id: 'mailen', name: 'Mailén', role: 'Desarrolladora Web', avatar: '/img/avatar-mailen.jpg' },
-  { id: 'veronica', name: 'Verónica', role: 'Desarrolladora Web', avatar: '/img/avatar-vero.jpg' }
+  { id: 'guillermo', name: 'Guillermo', role: 'Desarrollador Web', avatar: '/img/avatar-guille.jpg' },
+  { id: 'braian', name: 'Braian', role: 'Desarrollador Web', avatar: '/img/avatar-braian.png' },
+  { id: 'mailen', name: 'Mailén', role: 'Desarrolladora Web', avatar: '/img/avatar-mailen.png' },
+  { id: 'veronica', name: 'Verónica', role: 'Desarrolladora Web', avatar: '/img/avatar-vero.jpeg' }
 ];
 
 function HomeDashboard() {
