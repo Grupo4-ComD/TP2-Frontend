@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomeDashboard from './components/HomeDashboard';
+import UserProfile from './components/UserProfile';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
           <Route path="/" element={<HomeDashboard />} />
           
           {/* 2. Ruta Dinámica: El perfil de cada integrante */}
-          <Route path="/perfil/:id" element={<h2>Aquí irá el Perfil Individual interactivo</h2>} />
+          <Route path="/perfil/:id" element={<UserProfile />} />
           
           {/* 3. Rutas futuras obligatorias del TP2 (En construcción) */}
           <Route path="/explorador" element={<h2>Aquí irá el buscador JSON en tiempo real</h2>} />

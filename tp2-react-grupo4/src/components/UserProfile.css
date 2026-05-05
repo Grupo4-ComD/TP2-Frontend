@@ -1,0 +1,178 @@
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+  color: #333;
+}
+
+.btn-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 15px;
+  background-color: #e0e0e0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-back:hover {
+  background-color: #ccc;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.avatar-placeholder {
+  font-size: 4rem;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 15px;
+  background: #3498db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.role {
+  color: #3498db;
+  margin-top: -10px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* === BARRAS DE PROGRESO ANIMADAS === */
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 12px;
+  background: #ecf0f1;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  width: 0;
+  border-radius: 6px;
+  /* La animación lee la variable CSS --target-width de React */
+  animation: fillBar 1.5s ease-out forwards;
+}
+
+@keyframes fillBar {
+  to { width: var(--target-width); }
+}
+
+/* === TECH STACK === */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tech-icon {
+  background: #f1f5f8;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.tech-icon:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 15px rgba(52, 152, 219, 0.3);
+  background: #e1f0fa;
+}
+
+/* === CARRUSEL MANUAL === */
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.carousel-btn {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: #3498db;
+}
+
+.carousel-content {
+  text-align: center;
+  flex: 1;
+  margin: 0 20px;
+}
+
+.carousel-img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.carousel-caption {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* === BOTONES SOCIALES === */
+.social-section {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.social-btn {
+  padding: 12px 25px;
+  background: #2c3e50;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.social-btn:hover {
+  transform: scale(1.1) translateY(-3px);
+  background: #e74c3c;
+  box-shadow: 0 10px 20px rgba(231, 76, 60, 0.4);
+}
