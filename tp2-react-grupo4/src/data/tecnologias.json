@@ -1,0 +1,22 @@
+[
+  { "id": 1, "nombre": "React", "tipo": "Librería", "rol": "Frontend" },
+  { "id": 2, "nombre": "JavaScript", "tipo": "Lenguaje", "rol": "Fullstack" },
+  { "id": 3, "nombre": "HTML5", "tipo": "Lenguaje", "rol": "Frontend" },
+  { "id": 4, "nombre": "CSS3", "tipo": "Estilos", "rol": "Frontend" },
+  { "id": 5, "nombre": "Node.js", "tipo": "Entorno", "rol": "Backend" },
+  { "id": 6, "nombre": "Express", "tipo": "Framework", "rol": "Backend" },
+  { "id": 7, "nombre": "MongoDB", "tipo": "Base de Datos", "rol": "Backend" },
+  { "id": 8, "nombre": "MySQL", "tipo": "Base de Datos", "rol": "Backend" },
+  { "id": 9, "nombre": "Git", "tipo": "Herramienta", "rol": "DevOps" },
+  { "id": 10, "nombre": "GitHub", "tipo": "Plataforma", "rol": "DevOps" },
+  { "id": 11, "nombre": "Vite", "tipo": "Herramienta", "rol": "Frontend" },
+  { "id": 12, "nombre": "Vercel", "tipo": "Plataforma", "rol": "DevOps" },
+  { "id": 13, "nombre": "Figma", "tipo": "Diseño", "rol": "UX/UI" },
+  { "id": 14, "nombre": "Bootstrap", "tipo": "Framework", "rol": "Frontend" },
+  { "id": 15, "nombre": "Tailwind", "tipo": "Framework", "rol": "Frontend" },
+  { "id": 16, "nombre": "TypeScript", "tipo": "Lenguaje", "rol": "Fullstack" },
+  { "id": 17, "nombre": "Python", "tipo": "Lenguaje", "rol": "Backend" },
+  { "id": 18, "nombre": "Java", "tipo": "Lenguaje", "rol": "Backend" },
+  { "id": 19, "nombre": "Angular", "tipo": "Framework", "rol": "Frontend" },
+  { "id": 20, "nombre": "Vue.js", "tipo": "Framework", "rol": "Frontend" }
+]

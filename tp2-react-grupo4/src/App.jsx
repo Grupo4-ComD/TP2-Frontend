@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomeDashboard from './components/HomeDashboard';
 import UserProfile from './components/UserProfile';
+import LocalDataExplorer from './components/LocalDataExplorer';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route path="/perfil/:id" element={<UserProfile />} />
           
           {/* 3. Rutas futuras obligatorias del TP2 (En construcción) */}
-          <Route path="/explorador" element={<h2>Aquí irá el buscador JSON en tiempo real</h2>} />
+          <Route path="/explorador" element={<LocalDataExplorer />} />
           <Route path="/api" element={<h2>Aquí irá el consumo de la API Externa</h2>} />
           <Route path="/galeria" element={<h2>Aquí irá la Galería Lightbox interactiva</h2>} />
           <Route path="/bitacora" element={<h2>Aquí irá la Bitácora y el Árbol de Componentes</h2>} />
