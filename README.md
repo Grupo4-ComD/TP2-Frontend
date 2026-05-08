@@ -1,5 +1,6 @@
 # TP2: Portafolio Interactivo en React - Grupo 4
-
+ejecución del servidor http://localhost:5173/
+npm run dev
 **Enlace al Proyecto Desplegado (Vercel):** `[Próximamente]`
 
 ## 1. Descripción del Proyecto
