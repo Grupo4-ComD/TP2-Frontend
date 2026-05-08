@@ -1,29 +1,54 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './Layout.css'; 
 
 function Layout({ children }) {
+  // Estado para controlar el modo oscuro
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Efecto que lee el estado y aplica la clase al body del HTML
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
+
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      
-      {/* Barra Lateral Fija (Sidebar) */}
-      <aside style={{ width: '250px', backgroundColor: '#2c3e50', color: 'white', padding: '20px' }}>
-        {/* Aquí luego pueden poner el logo del grupo como pide el TP */}
-        <h2>Grupo 4</h2>
-        <nav style={{ marginTop: '30px' }}>
-          <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
-            <li><Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>🏠 Inicio (Dashboard)</Link></li>
-            <li><Link to="/explorador" style={{ color: '#fff', textDecoration: 'none' }}>🔍 Buscador JSON</Link></li>
-            <li><Link to="/api" style={{ color: '#fff', textDecoration: 'none' }}>☁️ API Externa</Link></li>
-            <li><Link to="/galeria" style={{ color: '#fff', textDecoration: 'none' }}>🖼️ Galería Lightbox</Link></li>
-            <li><Link to="/bitacora" style={{ color: '#fff', textDecoration: 'none' }}>📘 Bitácora</Link></li>
-          </ul>
+    <div className="dashboard-layout">
+      {/* Sidebar Fija (Requerimiento obligatorio TP2) */}
+      <aside className="sidebar">
+        <div className="sidebar-brand">
+          <h2>Grupo 4</h2>
+        </div>
+        <nav className="sidebar-nav">
+          <Link to="/">🏠 Inicio</Link>
+          <Link to="/explorador">🔍 Buscador JSON</Link>
+          <Link to="/api">🌐 API Externa</Link>
+          <Link to="/galeria">🖼️ Galería</Link>
+          <Link to="/bitacora">📝 Bitácora</Link>
         </nav>
       </aside>
 
-      {/* Panel Central Dinámico (MainContent) */}
-      <main style={{ flex: 1, padding: '40px', backgroundColor: '#f9f9f9' }}>
-        {children}
-      </main>
+      {/* Panel Central */}
+      <div className="main-content">
+        {/* Cabecera superior con el botón de Tema */}
+        <header className="topbar">
+          <h1>Panel de Control Web</h1>
+          <button 
+            className="btn-theme" 
+            onClick={() => setIsDarkMode(!isDarkMode)}
+          >
+            {isDarkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro'}
+          </button>
+        </header>
 
+        {/* Aquí adentro React inyectará la vista que corresponda (Home, Perfil, etc) */}
+        <main className="content-area">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }
