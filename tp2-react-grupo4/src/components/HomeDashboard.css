@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* ========================================================
    1. PRESENTACIÓN Y GRILLA DINÁMICA (TP2 + Identidad TP1)
    ======================================================== */
@@ -187,9 +188,118 @@ body.dark-mode .card--vero { --fx-grid: rgba(231, 234, 243, 0.08); }
   --fx-heart: rgba(239, 68, 68, 0.16);
   --fx-health: rgba(16, 185, 129, 0.18);
   --fx-grid: rgba(15, 23, 42, 0.06);
+=======
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.home-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.home-title {
+  font-size: 26px;
+  font-weight: 720;
+}
+
+.home-subtitle {
+  color: var(--muted);
+  max-width: 70ch;
+}
+
+.home-panel {
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+
+.home-panel-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  margin-bottom: 12px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.member-card {
+  display: flex;
+  gap: 14px;
+  padding: 14px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  opacity: 0;
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: rgba(96, 165, 250, 0.28);
+}
+
+.avatar-frame {
+  width: 82px;
+  height: 82px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(96, 165, 250, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+:root[data-theme='light'] .avatar-frame {
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+.avatar-img {
+  width: 82px;
+  height: 82px;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: scale(1.03);
+  transition: opacity 0.35s ease, filter 0.35s ease, transform 0.35s ease;
+}
+
+.avatar-img.is-loaded {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+
+.member-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.member-name {
+  font-size: 16px;
+  font-weight: 680;
+  color: var(--text);
+>>>>>>> Stashed changes
 }
 body.dark-mode .card--mailen { --fx-grid: rgba(231, 234, 243, 0.10); }
 
+<<<<<<< Updated upstream
 .card--mailen::after {
   content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.35s ease;
   background-image: radial-gradient(18px 18px at 18% 22%, var(--fx-heart), transparent 62%),
@@ -301,3 +411,27 @@ body.dark-mode .card--braian { --fx-grid: rgba(231, 234, 243, 0.10); --fx-scan: 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+=======
+.member-role {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-2);
+}
+
+.member-bio {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.btn-perfil {
+  margin-top: 8px;
+  padding-inline: 16px;
+}
+
+@media (max-width: 960px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+>>>>>>> Stashed changes
