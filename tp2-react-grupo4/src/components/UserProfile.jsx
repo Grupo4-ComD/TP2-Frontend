@@ -1,11 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './UserProfile.css';
 
-function UserProfile() {
-  const { id } = useParams(); 
-
-  const teamData = {
+const TEAM_DATA = {
     guillermo: {
       name: 'Guillermo Sciulli',
       role: 'Desarrollador Full Stack & IA',
@@ -79,15 +76,89 @@ function UserProfile() {
         { id: 3, title: 'El diablo viste a la moda', img: '' }
       ]
     }
+};
+
+function ProfileView({ id }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const [terminalLines, setTerminalLines] = useState(() => [`> npm run profile -- --id=${id}`]);
+
+  const data = TEAM_DATA[id] || {
+    name: 'Usuario no encontrado',
+    role: '',
+    bio: '',
+    skills: [],
+    techStack: [],
+    learning: [],
+    hobbies: [],
+    projects: []
   };
 
-  const profileData = teamData[id] || { 
-    name: 'Usuario no encontrado', 
-    role: '', bio: '', skills: [], techStack: [], learning: [], hobbies: [], 
-    projects: [{img: '', title: ''}] 
+  const profileData = {
+    ...data,
+    skills: data.skills || [],
+    techStack: data.techStack || [],
+    learning: data.learning || [],
+    hobbies: data.hobbies || [],
+    projects: (data.projects || []).map((project) => {
+      const img =
+        project.img ||
+        `https://via.placeholder.com/600x300/0b1020/e7eaf2?text=${encodeURIComponent(project.title)}`;
+      return { ...project, img };
+    })
   };
 
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    let step = 0;
+    let hideTimeoutId;
+    const thresholds = [10, 26, 44, 62, 78, 92];
+    const steps = [
+      '> vite v8  building profile...',
+      '> resolving modules...',
+      '> fetching data...',
+      '> optimizing assets...',
+      '> done. rendering UI...'
+    ];
+
+    const startTime = Date.now();
+    const durationMs = 5000;
+
+    const intervalId = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const p = Math.min(97, Math.floor((elapsed / durationMs) * 97));
+      setProgress(p);
+
+      while (step < thresholds.length && p >= thresholds[step]) {
+        const nextLine = steps[step];
+        if (nextLine) {
+          setTerminalLines((prev) => (prev[prev.length - 1] === nextLine ? prev : [...prev, nextLine]));
+        }
+        step += 1;
+      }
+    }, 60);
+
+    const finishTimeoutId = setTimeout(() => {
+      clearInterval(intervalId);
+      setProgress(100);
+      setTerminalLines((prev) => {
+        const last = prev[prev.length - 1];
+        const finalLine = '> ✓ profile ready';
+        return last === finalLine ? prev : [...prev, finalLine];
+      });
+
+      hideTimeoutId = setTimeout(() => {
+        setIsLoading(false);
+      }, 260);
+    }, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(finishTimeoutId);
+      if (hideTimeoutId) clearTimeout(hideTimeoutId);
+    };
+  }, []);
 
   const nextSlide = () => {
     if (profileData.projects.length > 0) {
@@ -101,8 +172,42 @@ function UserProfile() {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="profile-container">
+        <Link to="/" className="btn-back">
+          ⬅ Volver al Dashboard
+        </Link>
+
+        <section className="profile-loader fade-in-up" aria-live="polite">
+          <div className="loader-top">
+            <div className="loader-title">Cargando perfil</div>
+            <div className="loader-meta">
+              <span className="loader-badge">/perfil/{id}</span>
+              <span className="loader-percent">{progress}%</span>
+            </div>
+          </div>
+
+          <div className="loader-terminal" role="status" aria-label="Salida de consola">
+            {terminalLines.map((line, index) => (
+              <div key={`${index}-${line}`} className="terminal-line">
+                {line}
+              </div>
+            ))}
+            <span className="terminal-cursor" aria-hidden="true">
+              ▋
+            </span>
+          </div>
+
+          <div className="loader-bar" aria-hidden="true">
+            <div className="loader-bar-fill" style={{ '--p': `${progress}%` }} />
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   return (
-    // ¡Aquí está la magia! La clase dinámica theme-{id} inyecta los colores de cada uno
     <div className={`profile-container theme-${id} fade-in-up`}>
       <Link to="/" className="btn-back">⬅ Volver al Dashboard</Link>
       
@@ -117,8 +222,8 @@ function UserProfile() {
         <section className="profile-card">
           <h3>Habilidades Técnicas</h3>
           <div className="skills-list">
-            {profileData.skills.map((skill, index) => (
-              <div key={index} className="skill-item">
+            {profileData.skills.map((skill) => (
+              <div key={skill.name} className="skill-item">
                 <div className="skill-info">
                   <span>{skill.name}</span>
                   <span>{skill.level}</span>
@@ -141,8 +246,8 @@ function UserProfile() {
         <section className="profile-card">
           <h3>Tech Stack</h3>
           <div className="tech-stack">
-            {profileData.techStack.map((tech, index) => (
-              <span key={index} className="tech-icon">{tech}</span>
+            {profileData.techStack.map((tech) => (
+              <span key={tech} className="tech-icon">{tech}</span>
             ))}
           </div>
           
@@ -173,13 +278,18 @@ function UserProfile() {
         )}
       </section>
 
-      <section className="social-section" style={{textAlign: 'center', marginTop: '30px'}}>
+      <section className="social-section">
         <a href="#" className="social-btn">GitHub</a>
         <a href="#" className="social-btn">LinkedIn</a>
         <a href="#" className="social-btn">Email</a>
       </section>
     </div>
   );
+}
+
+function UserProfile() {
+  const { id } = useParams(); 
+  return <ProfileView key={id} id={id} />;
 }
 
 export default UserProfile;
