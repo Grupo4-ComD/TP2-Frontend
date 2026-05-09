@@ -2,11 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './UserProfile.css';
 
-<<<<<<< Updated upstream
-function UserProfile() {
-  const { id } = useParams(); 
-
-  const teamData = {
+const TEAM_DATA = {
     guillermo: {
       name: 'Guillermo Sciulli',
       role: 'Desarrollador Full Stack & IA',
@@ -80,34 +76,36 @@ function UserProfile() {
         { id: 3, title: 'El diablo viste a la moda', img: '' }
       ]
     }
-  };
+};
 
-  const profileData = teamData[id] || { 
-    name: 'Usuario no encontrado', 
-    role: '', bio: '', skills: [], techStack: [], learning: [], hobbies: [], 
-    projects: [{img: '', title: ''}] 
-=======
 function ProfileView({ id }) {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [terminalLines, setTerminalLines] = useState(() => [`> npm run profile -- --id=${id}`]);
 
+  const data = TEAM_DATA[id] || {
+    name: 'Usuario no encontrado',
+    role: '',
+    bio: '',
+    skills: [],
+    techStack: [],
+    learning: [],
+    hobbies: [],
+    projects: []
+  };
+
   const profileData = {
-    name: id.toUpperCase(),
-    role: 'Desarrollador Web / Estudiante IFTS',
-    bio: 'Apasionado por la tecnología, la automatización y la creación de experiencias web fluidas y eficientes.',
-    skills: [
-      { name: 'HTML & CSS', level: '90%' },
-      { name: 'JavaScript Vanilla', level: '85%' },
-      { name: 'React & React Router', level: '60%' }
-    ],
-    techStack: ['⚛️ React', '🟨 JavaScript', '🌐 HTML5', '🎨 CSS3', '🗄️ SQL'],
-    projects: [
-      { id: 1, title: 'Proyecto 1: Landing Page', img: 'https://via.placeholder.com/600x300/2c3e50/ffffff?text=Proyecto+1' },
-      { id: 2, title: 'Proyecto 2: Portfolio Grupal', img: 'https://via.placeholder.com/600x300/34495e/ffffff?text=Proyecto+2' },
-      { id: 3, title: 'Proyecto 3: Dashboard React', img: 'https://via.placeholder.com/600x300/3498db/ffffff?text=Proyecto+3' }
-    ]
->>>>>>> Stashed changes
+    ...data,
+    skills: data.skills || [],
+    techStack: data.techStack || [],
+    learning: data.learning || [],
+    hobbies: data.hobbies || [],
+    projects: (data.projects || []).map((project) => {
+      const img =
+        project.img ||
+        `https://via.placeholder.com/600x300/0b1020/e7eaf2?text=${encodeURIComponent(project.title)}`;
+      return { ...project, img };
+    })
   };
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -210,7 +208,6 @@ function ProfileView({ id }) {
   }
 
   return (
-    // ¡Aquí está la magia! La clase dinámica theme-{id} inyecta los colores de cada uno
     <div className={`profile-container theme-${id} fade-in-up`}>
       <Link to="/" className="btn-back">⬅ Volver al Dashboard</Link>
       
@@ -281,11 +278,7 @@ function ProfileView({ id }) {
         )}
       </section>
 
-<<<<<<< Updated upstream
-      <section className="social-section" style={{textAlign: 'center', marginTop: '30px'}}>
-=======
       <section className="social-section">
->>>>>>> Stashed changes
         <a href="#" className="social-btn">GitHub</a>
         <a href="#" className="social-btn">LinkedIn</a>
         <a href="#" className="social-btn">Email</a>

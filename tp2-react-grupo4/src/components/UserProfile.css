@@ -63,14 +63,6 @@ body.dark-mode .theme-guillermo {
    2. ESTILOS ESTRUCTURALES DEL PERFIL
    ======================================================== */
 .profile-container {
-<<<<<<< Updated upstream
-  padding: 30px;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  min-height: 100vh;
-  border-radius: 12px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-=======
   max-width: 900px;
   margin: 0 auto;
   color: var(--text);
@@ -93,7 +85,6 @@ body.dark-mode .theme-guillermo {
   transform: translateY(-1px);
   background: var(--surface-2);
   box-shadow: var(--shadow-soft);
->>>>>>> Stashed changes
 }
 
 .profile-header {
@@ -101,26 +92,10 @@ body.dark-mode .theme-guillermo {
   margin-bottom: 40px;
 }
 
-<<<<<<< Updated upstream
 .profile-header h2 {
-  color: var(--primary-color);
-  font-size: 2.5rem;
-  margin: 10px 0;
+  margin: 10px 0 6px;
 }
 
-.role {
-  color: var(--secondary-color);
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.bio {
-  max-width: 800px;
-  margin: 20px auto;
-  font-size: 1.1rem;
-  line-height: 1.8;
-=======
 .avatar-placeholder {
   font-size: 4rem;
   width: 100px;
@@ -138,7 +113,12 @@ body.dark-mode .theme-guillermo {
 .role {
   color: var(--primary-2);
   margin-top: -10px;
->>>>>>> Stashed changes
+}
+
+.bio {
+  max-width: 72ch;
+  margin: 12px auto 0;
+  color: var(--muted);
 }
 
 .profile-grid {
@@ -149,23 +129,16 @@ body.dark-mode .theme-guillermo {
 }
 
 .profile-card {
-<<<<<<< Updated upstream
-  background-color: var(--card-bg);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-  color: var(--text-color);
-}
-
-.profile-card:hover {
-  transform: translateY(-5px);
-=======
   background: var(--surface);
   padding: 18px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
+}
+
+.profile-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
 }
 
 .profile-loader {
@@ -293,15 +266,11 @@ body.dark-mode .theme-guillermo {
   100% {
     transform: translateX(60%);
   }
->>>>>>> Stashed changes
 }
 
 .profile-card h3 {
-  color: var(--primary-color);
-  margin-bottom: 20px;
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 10px;
-  display: inline-block;
+  color: var(--text);
+  margin-bottom: 14px;
 }
 
 /* Barras de habilidades Animadas */
@@ -315,24 +284,15 @@ body.dark-mode .theme-guillermo {
 .progress-bar-bg {
   width: 100%;
   height: 12px;
-<<<<<<< Updated upstream
-  background-color: rgba(128, 128, 128, 0.2);
-  border-radius: 10px;
-=======
   background: rgba(255, 255, 255, 0.12);
   border-radius: 6px;
->>>>>>> Stashed changes
   overflow: hidden;
 }
 .progress-bar-fill {
   height: 100%;
-<<<<<<< Updated upstream
-  background-color: var(--primary-color);
-=======
   background: linear-gradient(90deg, rgba(34, 197, 94, 0.95), rgba(96, 165, 250, 0.95));
->>>>>>> Stashed changes
   width: 0;
-  border-radius: 10px;
+  border-radius: 6px;
   animation: fillBar 1.5s ease forwards;
 }
 @keyframes fillBar {
@@ -342,14 +302,6 @@ body.dark-mode .theme-guillermo {
 /* Tech Stack */
 .tech-stack { display: flex; flex-wrap: wrap; gap: 15px; }
 .tech-icon {
-<<<<<<< Updated upstream
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-weight: bold;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-=======
   background: var(--surface-2);
   padding: 10px 12px;
   border-radius: 12px;
@@ -363,7 +315,6 @@ body.dark-mode .theme-guillermo {
   transform: translateY(-2px);
   box-shadow: var(--shadow-soft);
   border-color: rgba(96, 165, 250, 0.3);
->>>>>>> Stashed changes
 }
 
 /* Carrusel y Botones */
@@ -374,25 +325,14 @@ body.dark-mode .theme-guillermo {
   gap: 20px;
 }
 .carousel-btn {
-<<<<<<< Updated upstream
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-=======
   background: var(--surface);
   color: var(--text);
   border: 1px solid var(--border);
-  font-size: 1.5rem;
-  padding: 10px 15px;
->>>>>>> Stashed changes
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   font-size: 1.2rem;
   cursor: pointer;
-<<<<<<< Updated upstream
-  transition: transform 0.2s ease;
-=======
   transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
 
@@ -400,36 +340,21 @@ body.dark-mode .theme-guillermo {
   transform: translateY(-1px);
   background: var(--surface-2);
   border-color: rgba(96, 165, 250, 0.3);
->>>>>>> Stashed changes
 }
-.carousel-btn:hover { transform: scale(1.1); }
 .carousel-content { width: 100%; max-width: 500px; }
 .carousel-img {
   width: 100%;
-<<<<<<< Updated upstream
-  height: 300px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 3px solid var(--secondary-color);
-=======
   border-radius: 12px;
   box-shadow: var(--shadow-soft);
   animation: fadeIn 0.5s ease-in-out;
->>>>>>> Stashed changes
+  object-fit: cover;
 }
 .carousel-caption {
   margin-top: 15px;
-  font-weight: bold;
-  color: var(--primary-color);
+  font-weight: 650;
+  color: var(--muted);
 }
 
-<<<<<<< Updated upstream
-.btn-back, .social-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: var(--secondary-color);
-  color: #fff;
-=======
 /* === BOTONES SOCIALES === */
 .social-section {
   display: flex;
@@ -442,19 +367,9 @@ body.dark-mode .theme-guillermo {
   padding: 12px 25px;
   background: var(--surface);
   color: var(--text);
->>>>>>> Stashed changes
   text-decoration: none;
   border-radius: 25px;
-  margin: 0 10px;
   font-weight: bold;
-<<<<<<< Updated upstream
-  transition: filter 0.3s ease, transform 0.3s ease;
-}
-.btn-back:hover, .social-btn:hover {
-  filter: brightness(0.9);
-  transform: translateY(-2px);
-}
-=======
   border: 1px solid var(--border);
   transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
@@ -466,4 +381,3 @@ body.dark-mode .theme-guillermo {
   box-shadow: var(--shadow);
   color: #071018;
 }
->>>>>>> Stashed changes
