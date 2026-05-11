@@ -6,6 +6,7 @@ const TEAM_DATA = {
     guillermo: {
       name: 'Guillermo Sciulli',
       role: 'Desarrollador Full Stack & IA',
+      avatar: '/img/avatar-guille.jpg',
       bio: 'Soy Guillermo, un Desarrollador Full Stack y Especialista en Automatización e IA enfocado en crear herramientas que resuelvan problemas reales. Me apasiona optimizar procesos a través del código, integrando sistemas de gestión, inventarios y motores de extracción de datos.',
       skills: [
         { name: 'PHP & SQL Server/MySQL', level: '90%' },
@@ -17,9 +18,9 @@ const TEAM_DATA = {
       learning: ['Perfeccionar nuevas tecnologías y APIs REST'],
       hobbies: ['🐢 Reproducción de tortugas', '🐠 Acuariofilia (Discus, Kois)', '🌱 Cuidado de plantas y huertas', '🛠️ Mejoras del hogar'],
       projects: [
-        { id: 1, title: 'Gestión de Consorcios', img: '' },
-        { id: 2, title: 'Inventario Visual', img: '' },
-        { id: 3, title: 'Extracción con Tesseract', img: '' }
+        { id: 1, title: 'Gestión de Consorcios', img: '/img/consorcios.jpg' },
+        { id: 2, title: 'Inventario Visual', img: '/img/inventario.jpg' },
+        { id: 3, title: 'Extracción con Tesseract', img: '/img/extraccion.jpg' }
       ]
     },
     veronica: {
@@ -211,8 +212,12 @@ function ProfileView({ id }) {
     <div className={`profile-container theme-${id} fade-in-up`}>
       <Link to="/" className="btn-back">⬅ Volver al Dashboard</Link>
       
-      <header className="profile-header">
-        <div className="avatar-placeholder">👤</div>
+  <header className="profile-header">
+        
+        <div className="perfil-img">
+          <img src={profileData.avatar} alt={`Foto de ${profileData.name}`} />
+        </div>
+        
         <h2>{profileData.name}</h2>
         <h4 className="role">{profileData.role}</h4>
         <p className="bio">{profileData.bio}</p>

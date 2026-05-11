@@ -128,3 +128,110 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Recuperamos la animación para que las tarjetas dejen de tener opacity 0 */
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================================
+   EFECTOS VISUALES ORIGINALES DEL TP1 (Hover de tarjetas)
+   ======================================================== */
+
+.member-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---> VERO (Química) <--- */
+.card--vero {
+  --fx-chem: rgba(34, 197, 94, 0.32);
+  --fx-grid: rgba(15, 23, 42, 0.06);
+}
+.card--vero::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.35s ease;
+  background-image: radial-gradient(18px 18px at 12% 26%, var(--fx-chem), transparent 62%),
+                    radial-gradient(12px 12px at 82% 30%, var(--fx-chem), transparent 64%),
+                    repeating-linear-gradient(90deg, transparent 0 10px, var(--fx-grid) 10px 11px),
+                    repeating-linear-gradient(0deg, transparent 0 10px, var(--fx-grid) 10px 11px);
+  background-size: 140px 220px, 180px 260px, 220px 220px, 220px 220px;
+}
+.card--vero:hover::after { opacity: 1; animation: vero-react 2.8s linear infinite; }
+@keyframes vero-react {
+  0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+  100% { background-position: 120px 260px, -110px 220px, 220px 0, 0 220px; }
+}
+
+/* ---> BRAIAN (Cyberpunk/Tech) <--- */
+.card--braian {
+  --fx-cyan: rgba(34, 211, 238, 0.30);
+  --fx-magenta: rgba(236, 72, 153, 0.22);
+  --fx-grid: rgba(15, 23, 42, 0.07);
+  --fx-scan: rgba(15, 23, 42, 0.05);
+}
+.card--braian::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.35s ease;
+  background-image: repeating-linear-gradient(0deg, transparent 0 8px, var(--fx-scan) 8px 9px),
+                    repeating-linear-gradient(90deg, transparent 0 14px, var(--fx-grid) 14px 15px),
+                    radial-gradient(260px 200px at 20% 20%, var(--fx-cyan), transparent 62%),
+                    radial-gradient(260px 200px at 80% 75%, var(--fx-magenta), transparent 66%);
+  background-size: 100% 100%, 220px 220px, 100% 100%, 100% 100%;
+}
+.card--braian:hover::after { opacity: 1; animation: braian-fx 2.4s linear infinite; }
+@keyframes braian-fx {
+  0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+  100% { background-position: 0 0, 220px 0, 0 0, 0 0; }
+}
+
+/* ---> GUILLERMO (Agua/Circuitos) <--- */
+.card--guillermo {
+  --fx-water: rgba(56, 189, 248, 0.22);
+  --fx-deep: rgba(34, 197, 94, 0.16);
+  --fx-circuit: rgba(15, 23, 42, 0.06);
+  --fx-bubble: rgba(255, 255, 255, 0.24);
+}
+.card--guillermo::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.35s ease;
+  background-image: radial-gradient(10px 10px at 16% 78%, var(--fx-bubble), transparent 60%),
+                    radial-gradient(14px 14px at 74% 66%, rgba(255, 255, 255, 0.18), transparent 62%),
+                    repeating-linear-gradient(90deg, transparent 0 12px, var(--fx-circuit) 12px 13px),
+                    repeating-linear-gradient(0deg, transparent 0 12px, var(--fx-circuit) 12px 13px),
+                    linear-gradient(135deg, var(--fx-water), var(--fx-deep));
+  background-size: 220px 260px, 240px 280px, 220px 220px, 220px 220px, 100% 100%;
+}
+.card--guillermo:hover::after { opacity: 1; animation: guille-flow 3.4s linear infinite; }
+@keyframes guille-flow {
+  0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0; }
+  100% { background-position: 120px -260px, -140px -280px, 220px 220px, 0 220px, 0 0; }
+}
+
+/* ---> MAILÉN (Salud/Corazón) <--- */
+.card--mailen {
+  --fx-heart: rgba(239, 68, 68, 0.16);
+  --fx-health: rgba(16, 185, 129, 0.18);
+  --fx-grid: rgba(15, 23, 42, 0.06);
+}
+.card--mailen::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity 0.35s ease;
+  background-image: radial-gradient(18px 18px at 18% 22%, var(--fx-heart), transparent 62%),
+                    radial-gradient(22px 22px at 82% 28%, var(--fx-health), transparent 64%),
+                    repeating-linear-gradient(90deg, transparent 0 12px, var(--fx-grid) 12px 13px),
+                    repeating-linear-gradient(0deg, transparent 0 12px, var(--fx-grid) 12px 13px);
+  background-size: 200px 260px, 240px 280px, 220px 220px, 220px 220px;
+}
+.card--mailen:hover::after { opacity: 1; animation: mailen-fx 2.9s linear infinite; }
+@keyframes mailen-fx {
+  0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+  100% { background-position: 120px 260px, -140px 280px, 220px 0, 0 220px; }
+}

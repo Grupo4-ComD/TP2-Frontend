@@ -1,0 +1,109 @@
+.bitacora-module {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bitacora-header h2 {
+  font-size: 26px;
+  font-weight: 720;
+  margin: 0 0 6px 0;
+}
+
+.bitacora-header p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.bitacora-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.bitacora-card {
+  background: var(--surface-2, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: var(--radius, 12px);
+  padding: 24px;
+  box-shadow: var(--shadow-soft, 0 4px 6px -1px rgba(0,0,0,0.1));
+  color: var(--text, #333);
+}
+
+.bitacora-card h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+
+.bitacora-card p {
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.text-muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+/* --- ESTILOS DEL ÁRBOL DE COMPONENTES --- */
+.tree-visualizer {
+  background: var(--surface, #f8fafc);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px dashed var(--border);
+  overflow-x: auto;
+}
+
+.tree, .tree ul {
+  list-style-type: none;
+  padding-left: 25px;
+  position: relative;
+}
+
+.tree::before, .tree ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  border-left: 2px solid var(--primary-2, #94a3b8);
+}
+
+.tree li {
+  margin: 15px 0;
+  position: relative;
+}
+
+.tree li::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: -15px;
+  width: 15px;
+  border-top: 2px solid var(--primary-2, #94a3b8);
+}
+
+.tree li:last-child::before {
+  background: var(--surface);
+  bottom: 0;
+  height: auto;
+}
+
+.node {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-family: monospace;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.node.root { background-color: #ef4444; color: white; }
+.node.layout { background-color: #f59e0b; color: white; }
+.node.view { background-color: #3b82f6; color: white; }
+.node.leaf { background-color: #10b981; color: white; }

@@ -381,3 +381,16 @@ body.dark-mode .theme-guillermo {
   box-shadow: var(--shadow);
   color: #071018;
 }
+
+.perfil-img { 
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.perfil-img img { 
+  width: 100%; 
+  max-width: 250px; 
+  border-radius: 50%; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+  border: 3px solid var(--secondary-color); 
+}
