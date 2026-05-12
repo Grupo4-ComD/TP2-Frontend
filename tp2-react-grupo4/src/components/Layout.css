@@ -139,105 +139,73 @@ body {
 }
 
 /* ========================================================
-   3. RESPONSIVE: VISTA PARA CELULARES
-   ======================================================== */
+   FIX DEFINITIVO: MENÚ HAMBURGUESA DASHBOARD TP2
+======================================================== */
+/* 1. Ocultar el botón y el fondo oscuro en monitores grandes */
+button.menu-toggle, div.mobile-overlay {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .dashboard-layout {
-    flex-direction: column; /* Apila todo verticalmente */
-  }
-
-  /* La barra lateral se convierte en un menú superior */
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  }
-  
-  .sidebar-brand {
-    padding: 15px;
-  }
-
-  .sidebar-nav {
-    flex-direction: row;
-    flex-wrap: wrap;
+  /* 2. Mostrar el botón hamburguesa arriba a la derecha */
+  button.menu-toggle {
+    display: flex !important;
+    align-items: center;
     justify-content: center;
-    padding: 10px;
-    gap: 8px;
-  }
-
-  .sidebar-nav a {
-    padding: 10px 15px;
-    font-size: 0.9rem;
+    background-color: var(--secondary-color, #6366f1) !important;
+    color: white !important;
+    border: none;
+    font-size: 24px;
+    width: 45px;
+    height: 45px;
+    position: fixed !important;
+    top: 15px !important;
+    right: 15px !important;
+    z-index: 10000 !important;
     border-radius: 8px;
-    background-color: rgba(255,255,255,0.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   }
 
-  .sidebar-nav a:hover {
-    padding-left: 15px;
-    border-left: none; /* Quitamos la barra lateral verde en hover en celular */
-    background-color: var(--secondary-color);
-  }
-
-  .main-content {
-    width: 100%;
-  }
-
-  /* El encabezado se apila para no chocar con el botón */
-  .topbar {
-    padding: 15px 20px;
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
-  
-  .topbar h1 {
-    font-size: 1.3rem;
-  }
-
-  .content-area {
-    padding: 15px; /* Menos padding en los costados para pantallas chicas */
-  }
-}
-
-
-/* =======================================================
-   AJUSTES RESPONSIVE PARA REACT (Móviles y Tablets)
-======================================================= */
-@media (max-width: 768px) {
-  /* Si tu Layout usa flexbox para poner la Sidebar al lado del contenido */
-  #root, .layout-container {
-    display: flex;
-    flex-direction: column !important; /* Pasa la barra lateral arriba */
-  }
-
-  /* Ajustamos la barra lateral para que no ocupe todo el alto */
-  .sidebar {
+  /* 3. Forzar que el contenedor principal suelte a la barra */
+  div.app-shell {
+    display: block !important;
     width: 100% !important;
-    height: auto !important;
-    position: relative !important;
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto; /* Permite deslizar el menú hacia los costados */
-    padding: 10px;
   }
 
-  /* Aseguramos que los contenedores principales no se desborden */
-  main, .page-content {
+  /* 4. ESCONDER A LA FUERZA LA BARRA LATERAL (-100%) */
+  div.app-shell aside.app-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: -100% !important; /* Esto es lo que la esconde fuera del celular */
+    width: 280px !important;
+    height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transition: left 0.4s ease-in-out !important;
+    z-index: 9999 !important;
+    background-color: var(--sidebar-bg, #1e293b) !important;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5) !important;
+  }
+
+  /* 5. React inyecta 'active' al tocar las rayitas y la barra entra */
+  div.app-shell aside.app-sidebar.active {
+    left: 0 !important; 
+  }
+
+  /* 6. Fondo oscuro al abrir el menú */
+  div.mobile-overlay {
+    display: block !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(15, 23, 42, 0.6) !important;
+    backdrop-filter: blur(3px) !important;
+    z-index: 9998 !important;
+  }
+
+  /* 7. Liberar el 100% de la pantalla para el contenido */
+  main.app-main {
     width: 100% !important;
-    padding: 15px !important;
-  }
-}
-
-/* Breakpoint para pantallas muy chicas exigido por el TP1 */
-@media (max-width: 400px) {
-  .sidebar a {
-    font-size: 0.85rem;
-    padding: 8px;
-  }
-  
-  /* Forzamos las grillas complejas a 1 sola columna */
-  .team-cards, .api-grid, .bitacora-grid {
-    grid-template-columns: 1fr !important;
+    margin-left: 0 !important;
+    padding-top: 70px !important; /* Espacio para que el botón no tape tu web */
   }
 }

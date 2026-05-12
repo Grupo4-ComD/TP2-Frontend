@@ -1,12 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Link } from 'react-router-dom'; 
 
 function Layout({ children }) {
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved === 'light' || saved === 'dark' ? saved : 'dark';
   });
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -46,6 +49,60 @@ function Layout({ children }) {
 
   return (
     <div className="app-shell">
+      
+      {/* MODO DIOS: Inyectamos el CSS directamente en React para aplastar reglas viejas */}
+      <style>{`
+        .menu-toggle, .mobile-overlay {
+          display: none;
+        }
+
+        @media (max-width: 768px) {
+          /* El botón hamburguesa flota siempre arriba a la derecha */
+          .menu-toggle {
+            display: flex !important;
+            align-items: center; justify-content: center;
+            background-color: var(--secondary-color, #6366f1) !important;
+            color: white !important; border: none;
+            font-size: 24px; width: 45px; height: 45px;
+            position: fixed !important; top: 15px !important; right: 15px !important;
+            z-index: 10001 !important; border-radius: 8px; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+          }
+
+          /* ESCONDEMOS LA BARRA A LA FUERZA (-100%) Y LA TRAEMOS (0) CON EL ESTADO DE REACT */
+          div.app-shell aside.app-sidebar {
+            position: fixed !important;
+            top: 0 !important;
+            left: ${menuOpen ? '0' : '-100%'} !important;
+            width: 280px !important;
+            height: 100vh !important;
+            display: flex !important;
+            flex-direction: column !important;
+            z-index: 10000 !important;
+            background-color: var(--sidebar-bg, #1e293b) !important;
+            transition: left 0.4s ease-in-out !important;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.5) !important;
+          }
+
+          /* Fondo oscuro atrás de la barra */
+          .mobile-overlay {
+            display: ${menuOpen ? 'block' : 'none'} !important;
+            position: fixed !important; inset: 0 !important;
+            background: rgba(15, 23, 42, 0.6) !important;
+            backdrop-filter: blur(2px) !important;
+            z-index: 9999 !important;
+          }
+
+          /* Liberamos todo el ancho de la pantalla */
+          div.app-shell { display: block !important; width: 100% !important; }
+          main.app-main { padding-top: 80px !important; width: 100% !important; margin-left: 0 !important; }
+        }
+      `}</style>
+
+      <button className="menu-toggle" onClick={toggleMenu}>
+        {menuOpen ? '✖' : '☰'}
+      </button>
+
       <aside className="app-sidebar">
         <div className="sidebar-top">
           <div className="brand">
@@ -74,10 +131,9 @@ function Layout({ children }) {
                       to={item.to}
                       className={({ isActive }) => (isActive ? 'nav-link is-active' : 'nav-link')}
                       end={item.to === '/'}
+                      onClick={closeMenu}
                     >
-                      <span className="nav-icon" aria-hidden="true">
-                        {item.icon}
-                      </span>
+                      <span className="nav-icon" aria-hidden="true">{item.icon}</span>
                       <span className="nav-label">{item.label}</span>
                     </NavLink>
                   </li>
@@ -87,6 +143,9 @@ function Layout({ children }) {
           ))}
         </nav>
       </aside>
+
+      {/* Div vacío que se usa para oscurecer el fondo */}
+      <div className="mobile-overlay" onClick={closeMenu}></div>
 
       <main className="app-main">
         <div className="app-content">{children}</div>
