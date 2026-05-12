@@ -1,7 +1,6 @@
 # TP2: Portafolio Interactivo en React - Grupo 4
-ejecución del servidor http://localhost:5173/
-npm run dev
-**Enlace al Proyecto Desplegado (Vercel):** `[Próximamente]`
+
+**Enlace al Proyecto Desplegado (Vercel):** `[https://tp-2-frontend-five.vercel.app/]`
 
 ## 1. Descripción del Proyecto
 Este proyecto es una *Single Page Application* (SPA) desarrollada con React y Vite. Representa la evolución de nuestro portafolio estático original (TP1), migrando hacia una arquitectura de componentes dinámicos y enrutamiento con React Router. El sistema funciona como un "Dashboard" centralizado que permite explorar los perfiles profesionales de cada integrante del equipo, buscar tecnologías en tiempo real y consumir datos de servicios externos.
