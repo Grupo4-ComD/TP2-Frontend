@@ -199,3 +199,45 @@ body {
     padding: 15px; /* Menos padding en los costados para pantallas chicas */
   }
 }
+
+
+/* =======================================================
+   AJUSTES RESPONSIVE PARA REACT (Móviles y Tablets)
+======================================================= */
+@media (max-width: 768px) {
+  /* Si tu Layout usa flexbox para poner la Sidebar al lado del contenido */
+  #root, .layout-container {
+    display: flex;
+    flex-direction: column !important; /* Pasa la barra lateral arriba */
+  }
+
+  /* Ajustamos la barra lateral para que no ocupe todo el alto */
+  .sidebar {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Permite deslizar el menú hacia los costados */
+    padding: 10px;
+  }
+
+  /* Aseguramos que los contenedores principales no se desborden */
+  main, .page-content {
+    width: 100% !important;
+    padding: 15px !important;
+  }
+}
+
+/* Breakpoint para pantallas muy chicas exigido por el TP1 */
+@media (max-width: 400px) {
+  .sidebar a {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+  
+  /* Forzamos las grillas complejas a 1 sola columna */
+  .team-cards, .api-grid, .bitacora-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
