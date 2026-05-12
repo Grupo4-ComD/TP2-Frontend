@@ -82,6 +82,7 @@ function Layout({ children }) {
             background-color: var(--sidebar-bg, #1e293b) !important;
             transition: left 0.4s ease-in-out !important;
             box-shadow: 5px 0 15px rgba(0,0,0,0.5) !important;
+             overflow-y: auto !important;
           }
 
           /* Fondo oscuro atrás de la barra */
