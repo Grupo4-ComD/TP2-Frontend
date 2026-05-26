@@ -1,62 +1,62 @@
-# TP2: Portafolio Interactivo en React - Grupo 4
+# 🚀 Grupo 4 - TP2: Proyecto React en Equipo (SPA)
 
-**Enlace al Proyecto Desplegado (Vercel):** `[https://tp-2-frontend-five.vercel.app/]`
+## 📌 Descripción del Proyecto
+Este proyecto es una Single Page Application (SPA) desarrollada con React, que representa la evolución y migración de nuestro Trabajo Práctico 1 estático hacia una arquitectura basada en componentes. Implementa una navegación de estilo Dashboard con una barra lateral (Sidebar) responsiva, gestión de rutas con React Router DOM, consumo asíncrono de una API pública, y un explorador dinámico de archivos JSON locales.
 
-## 1. Descripción del Proyecto
-Este proyecto es una *Single Page Application* (SPA) desarrollada con React y Vite. Representa la evolución de nuestro portafolio estático original (TP1), migrando hacia una arquitectura de componentes dinámicos y enrutamiento con React Router. El sistema funciona como un "Dashboard" centralizado que permite explorar los perfiles profesionales de cada integrante del equipo, buscar tecnologías en tiempo real y consumir datos de servicios externos.
+## 🔗 Enlace al Proyecto Desplegado
+* **Vercel:** [https://tp-2-frontend-five.vercel.app//]
 
-## 2. Integrantes
-*   **Guillermo** - [Perfil de (link)
-*   **Braian** -[Perfil de (link)
-*   **Mailén** - [Perfil de (link)
-*   **Verónica** - [Perfil de (link)
+## 👥 Integrantes del Equipo
+* **Braian ** - [Enlace a su GitHub]
+* **Guillermo ** - [Enlace a su GitHub]
+* **Mailén** - [Enlace a su GitHub]
+* **Verónica ** - [Enlace a su GitHub]
 
-## 3. Tecnologías Utilizadas
-* **Core:** React, Vite, JavaScript (ES6+), HTML5, CSS3.
-* **Enrutamiento:** React Router DOM.
-* **Diseño y UI:** Variables CSS (Custom Properties) para Modo Oscuro, CSS Modules / Hojas de estilo estructuradas.
-* **Fuentes e Iconos:** Google Fonts, FontAwesome.
-* **Despliegue:** Vercel / GitHub Pages.
+## 🛠️ Tecnologías Utilizadas
+* **Core:** React, React Router DOM, JavaScript (ES6+).
+* **Maquetado y Estilos:** HTML5, CSS3 puro (Flexbox, Grid, Variables CSS, Modo Oscuro).
+* **Entorno y Build:** Vite, Node.js, NPM.
+* **Control de Versiones y Deploy:** Git, GitHub, Vercel.
+* **Recursos Visuales:** Emojis nativos, Google Fonts.
 
-## 4. Estructura de Archivos
-Nuestra arquitectura sigue el patrón estándar de un proyecto React inicializado con Vite:
+## 📁 Estructura de Archivos
+La arquitectura del proyecto sigue las buenas prácticas de React y Vite:
 ```text
-/src
- ├── /components    # Componentes reutilizables (HomeDashboard, UserProfile, ExternalApi, etc.)
- ├── /data          # Archivo tecnologias.json con 20 objetos para la base de datos local
- ├── App.jsx        # Enrutador principal (React Router) y estructura base
- ├── index.css      # Estilos globales y variables del Dark Mode
- └── main.jsx       # Punto de entrada a la aplicación (Virtual DOM)
-/public
- └── /img           # Imágenes estáticas (avatares, miniaturas de proyectos)
-
-## 5. Guía de Estilos
-Paleta de Colores (Modo Oscuro):
-Superficie Principal (Background): #0f172a
-Superficie de Tarjetas (Cards): #1e293b
-Texto Primario: #f8fafc
-Acento Primario: #3b82f6 (Azul)
-Acento Secundario / Success: #10b981 (Verde Esmeralda)
-Tipografías: Inter obtenida desde Google Fonts para garantizar excelente legibilidad en interfaces digitales modernas.
-Iconografía: Emojis nativos y FontAwesome para el diseño de la botonera lateral.
-
-## 6. Funcionalidades y Componentes Implementados (Lo hecho)
-HomeDashboard.jsx & UserProfile.jsx: Renderizado dinámico de tarjetas iterando sobre un arreglo de datos (TEAM_DATA). Incluye efecto de carga de terminal simulada al cambiar de vistas.
-LocalDataExplorer.jsx: Buscador en tiempo real que utiliza el hook useState y el método .filter() sobre un archivo JSON local, actualizando el Virtual DOM instantáneamente ante cada tecla presionada por el usuario.
-ExternalApi.jsx: Consumo asíncrono de la API de Rick & Morty mediante fetch y useEffect. Incluye manejo de estados avanzados: pantalla de carga (isLoading), captura de errores con botón de reintento (try...catch), y controles de paginación obligatorios.
-ImageGallery.jsx: Galería que utiliza estado para implementar un modal interactivo (Lightbox) controlable mediante clics, flechas del teclado y la tecla ESC.
-
-*(Nota : Aquí debemos agregar las capturas de pantalla de la Home, appi y del Buscador funcionando)*
-`![Captura del Buscador](link-a-tu-imagen.png)`
-
-## 7. Evolución del Proyecto (De TP1 a TP2)
-En el Trabajo Práctico 1, contábamos con múltiples archivos HTML inconexos (index.html, vero.html, guille.html) que requerían recargar el navegador en cada clic, compartiendo bloques redundantes de código (como la barra de navegación). Con la migración a React, logramos:
-Modularización: Convertimos la navegación y el layout en componentes reutilizables.
-Navegación Fluida: Gracias a react-router-dom, implementamos una SPA sin tiempos de recarga de página.
-Manejo del DOM Eficiente: Funciones que requerían manipulación directa y laboriosa del DOM con vanilla JS, ahora se controlan fácilmente mediante el estado (useState) de React.
-
-## 8. Uso de Inteligencia Artificial
-En el desarrollo de este proyecto, utilizamos la asistencia de Inteligencia Artificial siguiendo las directrices de la cátedra:
-Herramientas utilizadas: ChatGPT / Gemini / NotebookLM.
-Uso en Contenido y Código: La IA fue clave como herramienta de Pair Programming. Se utilizó para refactorizar efectos visuales de CSS puro del TP1 y adaptarlos a la nueva estructura JSX de las tarjetas de perfil. Además, nos asistió en el debugging (resolución de errores) durante la implementación de la paginación y manejo de errores asíncronos en la API externa. También se empleó para estructurar la documentación jerárquica del Árbol de Componentes en la Bitácora.
-Imágenes: Se emplearon herramientas generativas de IA y recursos gráficos digitales para la creación de avatares de perfil representativos, manteniendo la privacidad de los rostros de los integrantes tal como habilita la consigna.
+/
+├── public/
+│   └── img/               # Recursos estáticos, logos, avatares e imágenes de proyectos
+├── src/
+│   ├── components/        # Componentes reutilizables (Layout, Sidebar, Cards, Botones)
+│   ├── pages/             # Vistas principales (Home, Perfiles, Galería, Bitácora, API, Explorador)
+│   ├── App.jsx            # Configuración principal de React Router
+│   ├── main.jsx           # Punto de entrada de la aplicación
+│   └── index.css          # Estilos globales y variables de estado (Modo Oscuro)
+├── index.html             # Plantilla base
+└── package.json           # Dependencias del proyecto
+🎨 Guía de Estilos
+Tipografías: ['Roboto' y 'Open Sans']
+Paleta de Colores (Hexadecimales):
+Fondo Modo Oscuro: #1e293b (Sidebar) / #0f172a (Main)
+Fondo Modo Claro: #ffffff / #f3f4f6
+Color Primario (Acentos/Botones): #3b82f6 / #6366f1
+Iconografía: Emojis nativos de sistema integrados en la estructura de navegación y textos.
+⚡ JavaScript y React (Funcionalidades Dinámicas)
+La aplicación cuenta con una fuerte lógica de componentes interactivos:
+Navegación Dinámica y Sidebar: Uso de useState para controlar la apertura y cierre del "Menú Hamburguesa" en dispositivos móviles, inyectando clases dinámicamente (active).
+Theme Toggle (Modo Oscuro/Claro): Implementado con useState y useEffect guardando la preferencia del usuario en el localStorage.
+Explorador JSON: Lógica de filtrado en tiempo real utilizando métodos de array (filter, map) actualizando el estado de la vista de forma inmediata.
+Consumo de API Externa: Peticiones asíncronas (fetch) controladas con useEffect, manejando estados de carga (isLoading) y un sistema de paginación interactivo.
+Renderizado de Perfiles: Inyección dinámica de datos (TEAM_DATA) para mostrar habilidades, progreso y proyectos a través del paso de props e identificadores en la URL (useParams).
+(Nota: [capturas de pantalla de la web funcionando])
+📈 Evolución del Proyecto (Migración TP1 a TP2)
+Se realizó una reestructuración total del código del TP1. Pasamos de utilizar archivos HTML y scripts JS aislados a un entorno modularizado con Vite y React.
+Reemplazamos la navegación superior clásica por una Sidebar Fija tipo Dashboard para centralizar el enrutamiento.
+Refactorizamos el CSS para evitar conflictos de clases utilizando selectores más específicos y aislando responsabilidades.
+Eliminamos la recarga de páginas mediante la implementación de React Router DOM.
+🤖 Uso de Inteligencia Artificial
+En este proyecto, las herramientas de IA funcionaron como un asistente técnico de gran valor:
+Herramientas utilizadas: ChatGPT / Claude.
+Uso en Código y Debugging:
+Se utilizó para diseñar la lógica dinámica del Menú Hamburguesa, inyectando estado de React (menuOpen) directamente en las clases de CSS para forzar transiciones visuales limpias en móviles y eludir problemas de memoria caché.
+Ayudó a diagnosticar y corregir problemas de enrutamiento de imágenes al migrar los recursos estáticos hacia la carpeta public/ de Vite, corrigiendo rutas relativas rotas en App.js y componentes individuales.
+Uso en Contenido: Generación de textos descriptivos, optimización de biografías de perfiles e ideas para esquematizar los componentes de la Bitácora.
