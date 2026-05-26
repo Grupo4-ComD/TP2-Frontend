@@ -7,10 +7,10 @@ Este proyecto es una Single Page Application (SPA) desarrollada con React, que r
 * **Vercel:** [https://tp-2-frontend-five.vercel.app/]
 
 ## 👥 Integrantes del Equipo
-* **Braian ** - [http://localhost:5173/perfil/braian]
-* **Guillermo ** - [http://localhost:5173/perfil/guillermo]
-* **Mailén ** - [http://localhost:5173/perfil/mailen]
-* **Verónica ** - [http://localhost:5173/perfil/veronica]
+* **Braian ** - [(https://tp-2-frontend-five.vercel.app/perfil/braian]
+* **Guillermo ** - [https://tp-2-frontend-five.vercel.app/perfil/guillermo]
+* **Mailén ** - [https://tp-2-frontend-five.vercel.app/perfil/perfil/mailen]
+* **Verónica ** - [https://tp-2-frontend-five.vercel.app/perfil/veronica]
 
 ## 🛠️ Tecnologías Utilizadas
 * **Core:** React, React Router DOM, JavaScript (ES6+).
