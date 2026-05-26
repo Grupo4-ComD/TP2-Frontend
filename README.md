@@ -7,10 +7,10 @@ Este proyecto es una Single Page Application (SPA) desarrollada con React, que r
 * **Vercel:** [https://tp-2-frontend-five.vercel.app/]
 
 ## 👥 Integrantes del Equipo
-* **Braian ** - [Enlace a su GitHub]
-* **Guillermo ** - [Enlace a su GitHub]
-* **Mailén** - [Enlace a su GitHub]
-* **Verónica ** - [Enlace a su GitHub]
+* **Braian ** - [http://localhost:5173/perfil/braian]
+* **Guillermo ** - [http://localhost:5173/perfil/guillermo]
+* **Mailén ** - [http://localhost:5173/perfil/mailen]
+* **Verónica ** - [http://localhost:5173/perfil/veronica]
 
 ## 🛠️ Tecnologías Utilizadas
 * **Core:** React, React Router DOM, JavaScript (ES6+).
@@ -22,17 +22,19 @@ Este proyecto es una Single Page Application (SPA) desarrollada con React, que r
 ## 📁 Estructura de Archivos
 La arquitectura del proyecto sigue las buenas prácticas de React y Vite:
 
-📦 Raíz del proyecto
- ┣ 📂 public/
- ┃ ┗ 📂 img/ (Recursos estáticos, avatares e imágenes de proyectos)
- ┣ 📂 src/
- ┃ ┣ 📂 components/ (Componentes reutilizables: Layout, Sidebar, Cards)
- ┃ ┣ 📂 pages/ (Vistas principales: Home, Perfiles, Galería, Bitácora)
- ┃ ┣ 📜 App.jsx (Configuración principal de React Router)
- ┃ ┣ 📜 main.jsx (Punto de entrada de la aplicación)
- ┃ ┗ 📜 index.css (Estilos globales y variables de Modo Oscuro)
- ┣ 📜 index.html (Plantilla base)
- ┗ 📜 package.json (Dependencias del proyecto)
+```text
+/
+├── public/
+│   └── img/               # Recursos estáticos, avatares e imágenes de proyectos
+├── src/
+│   ├── components/        # Componentes reutilizables (Layout, Sidebar, Cards)
+│   ├── pages/             # Vistas principales (Home, Perfiles, Galería, Bitácora)
+│   ├── App.jsx            # Configuración principal de React Router
+│   ├── main.jsx           # Punto de entrada de la aplicación
+│   └── index.css          # Estilos globales y variables de Modo Oscuro
+├── index.html             # Plantilla base
+└── package.json           # Dependencias del proyecto
+```
 
 ## 🎨 Guía de Estilos
 * **Tipografías:** [Escribe aquí la fuente de Google Fonts usada, ej: 'Roboto' y 'Open Sans']
