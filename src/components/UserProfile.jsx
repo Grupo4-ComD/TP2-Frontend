@@ -24,8 +24,9 @@ const TEAM_DATA = {
       ]
     },
     veronica: {
-      name: 'Verónica Greco',
+      name: 'Verónica',
       role: 'Bioquímica y Desarrolladora',
+      avatar: '/img/avatar-vero.jpeg',
       bio: 'Mi nombre es Verónica, soy bioquímica y me desempeñé siempre en el área industrial. Desde hace tres años me estoy formando en el mundo de la programación. Mi objetivo es fusionar conocimientos científicos y programación para crear soluciones innovadoras.',
       skills: [
         { name: 'Java & Python', level: '85%' },
@@ -36,9 +37,9 @@ const TEAM_DATA = {
       learning: ['Node.js', 'React', 'Bases de datos NoSQL'],
       hobbies: ['🔬 Ciencia', '🧬 Biología', '💻 Programación'],
       projects: [
-        { id: 1, title: 'Gestión para Laboratorio', img: '' },
-        { id: 2, title: 'Protocolos Digitales', img: '' },
-        { id: 3, title: 'Control de Stock', img: '' }
+        { id: 1, title: 'Sistema de Gesión para Laboratorio', img: '/img/sist-gestion.jpg' },
+        { id: 2, title: 'Protocolos de Laboratorio Digitales', img: '/img/check-list.jpg' },
+        { id: 3, title: 'Gestión de Inventario en Taller Militar', img: '/img/taller.png' }
       ]
     },
     mailen: {

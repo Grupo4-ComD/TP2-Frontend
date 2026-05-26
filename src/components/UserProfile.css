@@ -9,11 +9,8 @@
   --card-bg: #bfd6d3; 
   --primary-color: #457272; 
   --secondary-color: #3c6e71;
-  font-family: "EB Garamond", serif;
+  font-family: "Roboto", sans-serif;
   background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); 
-}
-.theme-veronica h2, .theme-veronica h3 {
-  font-family: "Delius Unicase", cursive;
 }
 
 /* ---> TEMA MAILÉN <--- */
@@ -344,10 +341,11 @@ body.dark-mode .theme-guillermo {
 .carousel-content { width: 100%; max-width: 500px; }
 .carousel-img {
   width: 100%;
+  aspect-ratio: 16/9;
   border-radius: 12px;
   box-shadow: var(--shadow-soft);
   animation: fadeIn 0.5s ease-in-out;
-  object-fit: cover;
+   object-fit: contain;;
 }
 .carousel-caption {
   margin-top: 15px;
