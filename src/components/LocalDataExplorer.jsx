@@ -33,8 +33,8 @@ function LocalDataExplorer() {
       {/* Grilla de resultados */}
       <div className="data-grid">
         {datosFiltrados.length > 0 ? (
-          datosFiltrados.map((item) => (
-            <div key={item.id} className="data-card">
+          datosFiltrados.map((item, index) => (
+            <div key={item.id} className="data-card" style={{ '--i': index }}>
               <h3>{item.nombre}</h3>
               <p><strong>Tipo:</strong> {item.tipo}</p>
               <span className="badge">{item.rol}</span>

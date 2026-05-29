@@ -273,6 +273,7 @@ function ProfileView({ id }) {
             <button onClick={prevSlide} className="carousel-btn">❮</button>
             <div className="carousel-content">
               <img 
+                key={currentSlide}
                 src={profileData.projects[currentSlide].img} 
                 alt={profileData.projects[currentSlide].title} 
                 className="carousel-img"
