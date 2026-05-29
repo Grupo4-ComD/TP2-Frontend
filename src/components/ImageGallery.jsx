@@ -11,11 +11,15 @@ function ImageGallery() {
     { id: 5, src: 'https://picsum.photos/id/1020/800/600', alt: 'Animal salvaje' },
     { id: 6, src: 'https://picsum.photos/id/1024/800/600', alt: 'Ave en vuelo' },
     { id: 7, src: 'https://picsum.photos/id/1025/800/600', alt: 'Bosque en invierno' },
-    { id: 8, src: 'https://picsum.photos/id/1021/800/600', alt: 'Naturaleza abstracta' }
+    { id: 8, src: 'https://picsum.photos/id/1021/800/600', alt: 'Naturaleza abstracta' },
+    { id: 8, src: 'https://picsum.photos/id/433/800/600', alt: 'Oso pardo' }
+    
   ];
 
   // Estado para controlar el Lightbox (guarda el índice de la imagen abierta, o null si está cerrado)
   const [currentIndex, setCurrentIndex] = useState(null);
+
+  const randomOrders = images.map(() => Math.random());
 
   // Funciones de navegación del Lightbox
   const openLightbox = (index) => setCurrentIndex(index);
@@ -40,6 +44,7 @@ function ImageGallery() {
       if (e.key === 'ArrowLeft') showPrev(e);
       if (e.key === 'ArrowRight') showNext(e);
     };
+   
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown); // Limpieza del evento
@@ -58,6 +63,7 @@ function ImageGallery() {
           <div 
             key={img.id} 
             className="gallery-item" 
+            style={{ '--delay': `${randomOrders[index]}s` }}
             onClick={() => openLightbox(index)}
           >
             <img src={img.src} alt={img.alt} loading="lazy" />

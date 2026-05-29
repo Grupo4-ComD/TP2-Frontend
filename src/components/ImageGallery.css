@@ -30,6 +30,17 @@
   cursor: pointer;
   aspect-ratio: 4/3;
   box-shadow: var(--shadow-soft);
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  animation: galleryReveal 0.7s ease forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes galleryReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .gallery-item:active {
