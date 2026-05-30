@@ -122,6 +122,7 @@ p {
   border-right: 1px solid var(--border);
   background: rgba(2, 6, 23, 0.55);
   backdrop-filter: blur(14px);
+   overflow-y: auto;
 }
 
 :root[data-theme='light'] .app-sidebar {
