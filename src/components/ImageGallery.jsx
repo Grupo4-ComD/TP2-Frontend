@@ -19,7 +19,7 @@ function ImageGallery() {
   // Estado para controlar el Lightbox (guarda el índice de la imagen abierta, o null si está cerrado)
   const [currentIndex, setCurrentIndex] = useState(null);
 
-  const randomOrders = images.map(() => Math.random());
+  const randomOrders = useMemo(() => images.map(() => Math.random()), []);
 
   // Funciones de navegación del Lightbox
   const openLightbox = (index) => setCurrentIndex(index);
