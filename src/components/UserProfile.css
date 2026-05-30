@@ -35,7 +35,16 @@
   --primary-color: #00e5ff;
   --secondary-color: #7a29ff;
   font-family: "Ubuntu", sans-serif;
-  background: radial-gradient(1200px 600px at 20% 0%, #0f1730 0%, #0b0f1a 60%) fixed;
+  background-color: #0b0f1a;
+  background-image:
+    radial-gradient(1000px 700px at 18% 10%, rgba(0, 229, 255, 0.22) 0%, rgba(11, 15, 26, 0) 60%),
+    radial-gradient(900px 620px at 82% 0%, rgba(122, 41, 255, 0.22) 0%, rgba(11, 15, 26, 0) 58%),
+    repeating-linear-gradient(0deg, rgba(230, 241, 255, 0.04) 0px, rgba(230, 241, 255, 0.04) 1px, rgba(0, 0, 0, 0) 6px, rgba(0, 0, 0, 0) 12px),
+    url('https://www.transparenttextures.com/patterns/cubes.png');
+  background-size: auto, auto, 100% 100%, auto;
+  background-position: center, center, center, center;
+  background-attachment: fixed, fixed, fixed, fixed;
+  background-blend-mode: screen, screen, soft-light, overlay;
 }
 .theme-braian .progress-bar-fill {
   box-shadow: 0 0 10px #00e5ff; 
@@ -307,14 +316,94 @@ body.dark-mode .theme-guillermo {
   overflow: hidden;
 }
 .progress-bar-fill {
+  --skill-pct: 0;
+  --fill-duration: clamp(450ms, calc(300ms + (var(--skill-pct) * 12ms)), 1800ms);
+  --stripe-duration: clamp(0.9s, calc(2.4s - (var(--skill-pct) * 0.012s)), 2.4s);
+  --shine-duration: clamp(1.1s, calc(2.8s - (var(--skill-pct) * 0.014s)), 2.8s);
+
   height: 100%;
   background: linear-gradient(90deg, rgba(34, 197, 94, 0.95), rgba(96, 165, 250, 0.95));
   width: 0;
   border-radius: 6px;
-  animation: fillBar 1.5s ease forwards;
+  position: relative;
+  overflow: hidden;
 }
+
+.progress-bar-fill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.35) 0px,
+    rgba(255, 255, 255, 0.35) 10px,
+    rgba(255, 255, 255, 0) 10px,
+    rgba(255, 255, 255, 0) 20px
+  );
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-120%);
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.progress-bar-fill.is-filled {
+  animation: fillBar var(--fill-duration) cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.progress-bar-fill.is-active::before {
+  animation: stripeMove var(--stripe-duration) linear infinite;
+}
+
+.progress-bar-fill.is-active::after {
+  animation: shineMove var(--shine-duration) ease-in-out infinite;
+}
+
 @keyframes fillBar {
   to { width: var(--target-width); }
+}
+
+@keyframes stripeMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(40px);
+  }
+}
+
+@keyframes shineMove {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar-fill.is-filled {
+    animation-duration: 300ms;
+  }
+
+  .progress-bar-fill.is-active::before,
+  .progress-bar-fill.is-active::after {
+    animation: none;
+  }
 }
 
 /* Tech Stack */
@@ -367,6 +456,62 @@ body.dark-mode .theme-guillermo {
   border-radius: 12px; 
 }
 
+.theme-braian .carousel-content {
+  position: relative;
+  border-radius: 12px;
+  transform: translateZ(0);
+}
+
+.theme-braian .carousel-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale(0.985);
+  box-shadow:
+    0 0 0 1px rgba(0, 229, 255, 0.0),
+    0 0 0 6px rgba(122, 41, 255, 0.0);
+  transition: opacity 260ms ease, transform 260ms ease, box-shadow 260ms ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.theme-braian .carousel-content::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background: linear-gradient(
+    115deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 229, 255, 0.18) 28%,
+    rgba(122, 41, 255, 0.16) 48%,
+    rgba(0, 229, 255, 0.18) 62%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 0%;
+  filter: saturate(1.1);
+  transition: opacity 260ms ease, background-position 520ms ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.theme-braian .carousel-content.is-clickfx::before {
+  opacity: 1;
+  transform: scale(1.01);
+  box-shadow:
+    0 0 0 1px rgba(0, 229, 255, 0.55),
+    0 0 0 6px rgba(122, 41, 255, 0.18);
+}
+
+.theme-braian .carousel-content.is-clickfx::after {
+  opacity: 1;
+  background-position: 100% 0%;
+}
+
 .carousel-img {
   width: 100%;
   aspect-ratio: 16/9;
@@ -374,6 +519,35 @@ body.dark-mode .theme-guillermo {
   box-shadow: var(--shadow-soft);
   animation: imageFade 0.45s ease;
   object-fit: cover;
+}
+
+.theme-braian .carousel-img {
+  cursor: pointer;
+  transition: transform 0.22s ease, filter 0.22s ease, box-shadow 0.22s ease;
+  will-change: transform, filter, box-shadow;
+}
+
+.theme-braian .carousel-img:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.35), 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.theme-braian .carousel-img:active {
+  transform: scale(0.985);
+  filter: saturate(1.05) contrast(1.03);
+}
+
+.theme-braian .carousel-content.is-clickfx .carousel-img {
+  transform: scale(1.03) rotate(-0.35deg);
+  filter: saturate(1.1) contrast(1.04);
+  box-shadow:
+    0 0 0 1px rgba(0, 229, 255, 0.2),
+    0 16px 44px rgba(0, 0, 0, 0.55);
+}
+
+.theme-braian .carousel-content.is-clickfx .carousel-caption {
+  position: relative;
+  z-index: 4;
 }
 
 @keyframes imageFade {
@@ -387,6 +561,12 @@ body.dark-mode .theme-guillermo {
     opacity: 1;
     transform: scale(1);
     filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-braian .carousel-content.is-clickfx .carousel-img {
+    transition-duration: 80ms;
   }
 }
 
