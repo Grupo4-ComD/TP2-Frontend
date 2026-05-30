@@ -7,9 +7,9 @@ Este proyecto es una Single Page Application (SPA) desarrollada con React, que r
 * **Vercel:** [https://tp-2-frontend-five.vercel.app/]
 
 ## 👥 Integrantes del Equipo
-* **Braian ** - [(https://tp-2-frontend-five.vercel.app/perfil/braian]
+* **Braian ** - [https://tp-2-frontend-five.vercel.app/perfil/braian]
 * **Guillermo ** - [https://tp-2-frontend-five.vercel.app/perfil/guillermo]
-* **Mailén ** - [https://tp-2-frontend-five.vercel.app/perfil/perfil/mailen]
+* **Mailén ** - [https://tp-2-frontend-five.vercel.app/perfil/mailen]
 * **Verónica ** - [https://tp-2-frontend-five.vercel.app/perfil/veronica]
 
 ## 🛠️ Tecnologías Utilizadas
@@ -37,7 +37,7 @@ La arquitectura del proyecto sigue las buenas prácticas de React y Vite:
 ```
 
 ## 🎨 Guía de Estilos
-* **Tipografías:** [Escribe aquí la fuente de Google Fonts usada, ej: 'Roboto' y 'Open Sans']
+* **Tipografías:** [Roboto] (https://fonts.google.com/specimen/Roboto) - Google Fonts.
 * **Paleta de Colores (Hexadecimales):**
   * Fondo Modo Oscuro: `#1e293b` (Sidebar) / `#0f172a` (Main)
   * Fondo Modo Claro: `#ffffff` / `#f3f4f6`

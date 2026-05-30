@@ -37,7 +37,7 @@ const TEAM_DATA = {
       learning: ['Node.js', 'React', 'Bases de datos NoSQL'],
       hobbies: ['🔬 Ciencia', '🧬 Biología', '💻 Programación'],
       projects: [
-        { id: 1, title: 'Sistema de Gesión para Laboratorio', img: '/img/sist-gestion.jpg' },
+        { id: 1, title: 'Sistema de Gestión para Laboratorio', img: '/img/sist-gestion.jpg' },
         { id: 2, title: 'Protocolos de Laboratorio Digitales', img: '/img/check-list.jpg' },
         { id: 3, title: 'Gestión de Inventario en Taller Militar', img: '/img/taller.png' }
       ]
@@ -45,7 +45,8 @@ const TEAM_DATA = {
     mailen: {
       name: 'Mailén',
       role: 'Administración en Salud y Tech',
-      bio: 'Trabajo hace varios años en el sector administrativo de salud y decidí dar un giro hacia la tecnología. Busco soluciones digitales inteligentes que optimicen los procesos del día a día. Cuando me alejo de las pantallas me dedico a pintar, mirar alguna serie y pasar tiempo con mi perrito Nilo.',
+      avatar: '/img/avatar-mailen.png',
+      bio: 'Soy Mailén, trabajo hace varios años en el sector administrativo de salud y decidí dar un giro hacia la tecnología. Busco soluciones digitales inteligentes que optimicen los procesos del día a día. Cuando me alejo de las pantallas me dedico a pintar, mirar alguna serie y pasar tiempo con mi perrito Nilo.',
       skills: [
         { name: 'HTML, CSS, Bootstrap', level: '90%' },
         { name: 'Java Básico & Angular', level: '75%' },

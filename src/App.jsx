@@ -22,6 +22,8 @@ function App() {
           <Route path="/explorador" element={<LocalDataExplorer />} />
           <Route path="/bitacora" element={<Bitacora />} />
          
+          <Route path="/galeria" element={<ImageGallery />} />
+           
           {/* Ruta 404 por si el usuario escribe mal la URL */}
           <Route path="*" element={<h2>Error 404: Página no encontrada</h2>} />
         </Routes>

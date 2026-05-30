@@ -235,3 +235,6 @@
   0% { background-position: 0 0, 0 0, 0 0, 0 0; }
   100% { background-position: 120px 260px, -140px 280px, 220px 0, 0 220px; }
 }
+.card--mailen .avatar-img {
+  transform: scale(1.3);
+}
