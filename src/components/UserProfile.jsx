@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './UserProfile.css';
 
@@ -64,6 +64,7 @@ const TEAM_DATA = {
     braian: {
       name: 'Braian Perea',
       role: 'Dev & Data',
+      avatar: '/img/avatar-braian.png',
       bio: 'Soy Braian Perea, un apasionado de los datos, los videojuegos y la tecnología, con conocimientos en desarrollo web. Me motiva seguir aprendiendo para combinar diseño y tecnología y ofrecer experiencias digitales excepcionales.',
       skills: [
         { name: 'HTML5, CSS3, Bootstrap', level: '90%' },
@@ -74,9 +75,9 @@ const TEAM_DATA = {
       learning: ['React & Node.js', 'TypeScript', 'APIs REST'],
       hobbies: ['🎮 Gaming y Streaming', '📊 Análisis de datos', '🏑 Hockey sobre césped', '🍳 Cocina'],
       projects: [
-        { id: 1, title: 'Dashboard de Métricas', img: '' },
-        { id: 2, title: 'App Web/Mobile', img: '' },
-        { id: 3, title: 'El diablo viste a la moda', img: '' }
+        { id: 1, title: 'Dashboard Gaming', img: '/img/Dashboard%20Gaming.png' },
+        { id: 2, title: 'ETL Image', img: '/img/ETL%20Image.png' },
+        { id: 3, title: 'App Responsive Develop', img: '/img/App%20Responsive%20Develop.png' }
       ]
     }
 };
@@ -85,6 +86,13 @@ function ProfileView({ id }) {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const [terminalLines, setTerminalLines] = useState(() => [`> npm run profile -- --id=${id}`]);
+  const [skillsAnimated, setSkillsAnimated] = useState(false);
+  const [skillsHover, setSkillsHover] = useState(false);
+  const [skillCounters, setSkillCounters] = useState({});
+  const skillsRef = useRef(null);
+  const rafIdRef = useRef(null);
+  const [projectClickFxActive, setProjectClickFxActive] = useState(false);
+  const projectClickFxTimeoutRef = useRef(null);
 
   const data = TEAM_DATA[id] || {
     name: 'Usuario no encontrado',
@@ -163,6 +171,106 @@ function ProfileView({ id }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (isLoading) return;
+    if (skillsAnimated) return;
+
+    const el = skillsRef.current;
+    if (!el) {
+      setSkillsAnimated(true);
+      return;
+    }
+
+    const activate = () => setSkillsAnimated(true);
+
+    const isInView = () => {
+      if (typeof window === 'undefined') return true;
+      const rect = el.getBoundingClientRect();
+      const viewportH = window.innerHeight || document.documentElement.clientHeight || 0;
+      const topBound = viewportH * 0.85;
+      const bottomBound = viewportH * 0.15;
+      return rect.top <= topBound && rect.bottom >= bottomBound;
+    };
+
+    if (isInView()) {
+      activate();
+      return;
+    }
+
+    if (typeof IntersectionObserver !== 'function') {
+      activate();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          activate();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [isLoading, skillsAnimated]);
+
+  useEffect(() => {
+    if (!skillsAnimated) return;
+    if (rafIdRef.current) return;
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motionScale = prefersReducedMotion ? 0.4 : 1;
+
+    const skills = (profileData.skills || []).map((skill) => {
+      const parsedPct = Number.parseFloat(String(skill.level).replace('%', ''));
+      const pct = Number.isFinite(parsedPct) ? Math.max(0, Math.min(100, parsedPct)) : 0;
+      const durationMs = Math.max(700, Math.min(2800, (600 + pct * 18) * motionScale));
+      return { key: skill.name, pct, durationMs };
+    });
+
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+    let startTs;
+    setSkillCounters(Object.fromEntries(skills.map((s) => [s.key, 0])));
+
+    const tick = (now) => {
+      if (startTs === undefined) {
+        startTs = now;
+        rafIdRef.current = requestAnimationFrame(tick);
+        return;
+      }
+
+      let allDone = true;
+      const nextCounters = {};
+
+      for (const s of skills) {
+        const raw = (now - startTs) / s.durationMs;
+        const t = raw >= 1 ? 1 : raw <= 0 ? 0 : raw;
+        if (t < 1) allDone = false;
+        nextCounters[s.key] = Math.round(s.pct * easeOutCubic(t));
+      }
+
+      setSkillCounters(nextCounters);
+
+      if (!allDone) {
+        rafIdRef.current = requestAnimationFrame(tick);
+      } else {
+        rafIdRef.current = null;
+      }
+    };
+
+    rafIdRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+      rafIdRef.current = null;
+    };
+  }, [skillsAnimated, profileData.skills]);
+
   const nextSlide = () => {
     if (profileData.projects.length > 0) {
       setCurrentSlide((prev) => (prev === profileData.projects.length - 1 ? 0 : prev + 1));
@@ -174,6 +282,35 @@ function ProfileView({ id }) {
       setCurrentSlide((prev) => (prev === 0 ? profileData.projects.length - 1 : prev - 1));
     }
   };
+
+  const triggerProjectClickFx = () => {
+    if (id !== 'braian') return;
+
+    if (projectClickFxTimeoutRef.current) {
+      clearTimeout(projectClickFxTimeoutRef.current);
+      projectClickFxTimeoutRef.current = null;
+    }
+
+    setProjectClickFxActive(false);
+
+    const activate = () => setProjectClickFxActive(true);
+    if (typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function') {
+      window.requestAnimationFrame(activate);
+    } else {
+      activate();
+    }
+
+    projectClickFxTimeoutRef.current = setTimeout(() => {
+      setProjectClickFxActive(false);
+      projectClickFxTimeoutRef.current = null;
+    }, 680);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (projectClickFxTimeoutRef.current) clearTimeout(projectClickFxTimeoutRef.current);
+    };
+  }, []);
 
   if (isLoading) {
     return (
@@ -226,20 +363,42 @@ function ProfileView({ id }) {
       </header>
 
       <div className="profile-grid">
-        <section className="profile-card">
+        <section
+          className="profile-card"
+          ref={skillsRef}
+          onMouseEnter={() => {
+            setSkillsAnimated(true);
+            setSkillsHover(true);
+          }}
+          onMouseLeave={() => setSkillsHover(false)}
+          onFocusCapture={() => {
+            setSkillsAnimated(true);
+            setSkillsHover(true);
+          }}
+          onBlurCapture={() => setSkillsHover(false)}
+        >
           <h3>Habilidades Técnicas</h3>
           <div className="skills-list">
-            {profileData.skills.map((skill) => (
-              <div key={skill.name} className="skill-item">
-                <div className="skill-info">
-                  <span>{skill.name}</span>
-                  <span>{skill.level}</span>
+            {profileData.skills.map((skill) => {
+              const parsedPct = Number.parseFloat(String(skill.level).replace('%', ''));
+              const pct = Number.isFinite(parsedPct) ? Math.max(0, Math.min(100, parsedPct)) : 0;
+              const counter = typeof skillCounters[skill.name] === 'number' ? skillCounters[skill.name] : 0;
+
+              return (
+                <div key={skill.name} className="skill-item">
+                  <div className="skill-info">
+                    <span>{skill.name}</span>
+                    <span>{skillsAnimated ? `${counter}%` : skill.level}</span>
+                  </div>
+                  <div className="progress-bar-bg">
+                    <div
+                      className={`progress-bar-fill${skillsAnimated ? ' is-filled' : ''}${skillsHover ? ' is-active' : ''}`}
+                      style={{ '--target-width': skill.level, '--skill-pct': pct }}
+                    ></div>
+                  </div>
                 </div>
-                <div className="progress-bar-bg">
-                  <div className="progress-bar-fill" style={{ '--target-width': skill.level }}></div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           
           <h4 style={{marginTop: '20px'}}>Pasatiempos y Gustos:</h4>
@@ -272,7 +431,19 @@ function ProfileView({ id }) {
         {profileData.projects.length > 0 && (
           <div className="carousel">
             <button onClick={prevSlide} className="carousel-btn">❮</button>
-            <div className="carousel-content">
+            <div
+              className={id === 'braian' && projectClickFxActive ? 'carousel-content is-clickfx' : 'carousel-content'}
+              onClick={id === 'braian' ? triggerProjectClickFx : undefined}
+              role={id === 'braian' ? 'button' : undefined}
+              tabIndex={id === 'braian' ? 0 : undefined}
+              onKeyDown={
+                id === 'braian'
+                  ? (e) => {
+                      if (e.key === 'Enter' || e.key === ' ') triggerProjectClickFx();
+                    }
+                  : undefined
+              }
+            >
               <img 
                 key={currentSlide}
                 src={profileData.projects[currentSlide].img} 

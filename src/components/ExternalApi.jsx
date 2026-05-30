@@ -54,11 +54,30 @@ function ExternalApi() {
       </header>
 
       <section className="api-panel">
-        {isLoading && (
-          <div className="api-status">
-            <div className="spinner"></div>
-            <p>Obteniendo información del servidor...</p>
-          </div>
+        {isLoading && !error && (
+          <>
+            <div className="api-grid" aria-label="Cargando resultados">
+              {Array.from({ length: 8 }).map((_, index) => (
+                <article key={`skeleton-${index}`} className="api-card api-card--skeleton" aria-hidden="true">
+                  <div className="api-skeleton api-skeleton-img" />
+                  <div className="api-card-body">
+                    <div className="api-skeleton api-skeleton-title" />
+                    <div className="api-skeleton api-skeleton-meta" />
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="pagination-controls" aria-hidden="true">
+              <button disabled className="btn-page">
+                ❮ Anterior
+              </button>
+              <span className="page-indicator">Cargando…</span>
+              <button disabled className="btn-page">
+                Siguiente ❯
+              </button>
+            </div>
+          </>
         )}
 
         {/* MEJORA: Pantalla de error con botón de reintento */}
