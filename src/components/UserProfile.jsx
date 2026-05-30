@@ -56,9 +56,9 @@ const TEAM_DATA = {
       learning: ['React', 'Java Avanzado', 'MongoDB'],
       hobbies: ['🎨 Pintar', '📺 Mirar series', '🐶 Jugar con Nilo', '💻 Codear'],
       projects: [
-        { id: 1, title: 'Web para Local', img: '' },
-        { id: 2, title: 'Portfolio SPA', img: '' },
-        { id: 3, title: 'App Agencia Vuelos', img: '' }
+        { id: 1, title: 'Web para Local', img: '/img/proyect-1.jpg' },
+        { id: 2, title: 'Portfolio SPA', img: '/img/proyect-2.jpg' },
+        { id: 3, title: 'App Agencia Vuelos', img: '/img/proyect-3.png' }
       ]
     },
     braian: {

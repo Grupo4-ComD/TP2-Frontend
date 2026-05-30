@@ -37,7 +37,7 @@ La arquitectura del proyecto sigue las buenas prácticas de React y Vite:
 ```
 
 ## 🎨 Guía de Estilos
-* **Tipografías:** [Roboto] (https://fonts.google.com/specimen/Roboto) - Google Fonts.
+* **Tipografías:** [Roboto](https://fonts.google.com/specimen/Roboto) - Google Fonts.
 * **Paleta de Colores (Hexadecimales):**
   * Fondo Modo Oscuro: `#1e293b` (Sidebar) / `#0f172a` (Main)
   * Fondo Modo Claro: `#ffffff` / `#f3f4f6`
