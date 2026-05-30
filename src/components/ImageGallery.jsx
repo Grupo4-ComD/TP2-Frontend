@@ -12,7 +12,7 @@ function ImageGallery() {
     { id: 6, src: 'https://picsum.photos/id/1024/800/600', alt: 'Ave en vuelo' },
     { id: 7, src: 'https://picsum.photos/id/1025/800/600', alt: 'Bosque en invierno' },
     { id: 8, src: 'https://picsum.photos/id/1021/800/600', alt: 'Naturaleza abstracta' },
-    { id: 8, src: 'https://picsum.photos/id/433/800/600', alt: 'Oso pardo' }
+    { id: 9, src: 'https://picsum.photos/id/433/800/600', alt: 'Oso pardo' }
     
   ];
 
