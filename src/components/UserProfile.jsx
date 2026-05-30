@@ -114,7 +114,7 @@ function ProfileView({ id }) {
     projects: (data.projects || []).map((project) => {
       const img =
         project.img ||
-        `https://via.placeholder.com/600x300/0b1020/e7eaf2?text=${encodeURIComponent(project.title)}`;
+        `https://placehold.co/600x300/0b1020/e7eaf2?text=${encodeURIComponent(project.title)}`;
       return { ...project, img };
     })
   };
