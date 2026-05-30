@@ -52,7 +52,38 @@ La aplicación cuenta con una fuerte lógica de componentes interactivos:
 4. **Consumo de API Externa:** Peticiones asíncronas (`fetch`) controladas con `useEffect`, manejando estados de carga (`isLoading`) y un sistema de paginación interactivo.
 5. **Renderizado de Perfiles:** Inyección dinámica de datos (`TEAM_DATA`) para mostrar habilidades, progreso y proyectos a través del paso de *props* e identificadores en la URL (`useParams`).
 
-*(Nota: [capturas de pantalla de la web funcionando])*
+## 📸 Capturas de Pantalla
+### ● Dashboard Principal
+Vista principal con la grilla de integrantes y acceso rápido a cada perfil, hover activo en card de Braian.
+
+<img width="1620" height="914" alt="Captura de pantalla 2026-05-30 163134" src="https://github.com/user-attachments/assets/8f0a6b90-2c4b-40a1-9b54-d6d192400546" />
+
+### ● Perfil Individual
+Vista detallada de cada perfil con habilidades técnicas, tech stack y carrusel de proyectos.
+
+<img width="1544" height="1023" alt="Captura de pantalla 2026-05-30 145557" src="https://github.com/user-attachments/assets/fda942dd-c17c-4776-a6e4-f79b9d6a6506" />
+
+### ● Buscador JSON en Tiempo Real
+Filtrado dinámico activo sobre 20 objetos locales con actualización instantánea.
+
+<img width="1609" height="916" alt="Captura de pantalla 2026-05-30 145609" src="https://github.com/user-attachments/assets/f54c14a4-1d1e-4096-aff1-eca0cc071223" />
+
+### ● API Externa con Paginación
+Consumo asíncrono de la API de Rick and Morty con sistema de navegación por páginas.
+
+<img width="1606" height="1050" alt="Captura de pantalla 2026-05-30 163530" src="https://github.com/user-attachments/assets/e2d467dd-b9db-4edc-8d17-2e156d6197c4" />
+
+### ● Galería Interactiva
+Visualizador tipo Grid con funcionalidad Lightbox, navegación con flechas y cierre por ESC.
+
+<img width="80%" height="926" alt="Captura de pantalla 2026-05-30 163102" src="https://github.com/user-attachments/assets/945e8c12-0482-4af5-ab77-d05b728ea051" />
+- <img width="80%" height="928" alt="Captura de pantalla 2026-05-30 163546" src="https://github.com/user-attachments/assets/f176f2d9-9466-49e2-9878-c1f0462d4503" />
+
+### ● Bitácora del Proyecto
+Documentación técnica con historial de desarrollo, roles y justificación de migración a React.
+
+<img width="1614" height="981" alt="Captura de pantalla 2026-05-30 163655" src="https://github.com/user-attachments/assets/32dcaf50-9531-4b2b-94bc-4a777b467b58" />
+
 
 ## 📈 Evolución del Proyecto (Migración TP1 a TP2)
 Se realizó una reestructuración total del código del TP1. Pasamos de utilizar archivos HTML y scripts JS aislados a un entorno modularizado con **Vite y React**. 
