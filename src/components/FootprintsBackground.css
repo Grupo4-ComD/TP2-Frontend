@@ -8,7 +8,7 @@
 
 .footprint {
   position: absolute;
-  font-size: 20rem;
+  font-size: clamp(3rem, 10vw, 20rem);
   opacity: 0.1;
   animation: float-up 80s linear infinite;
 }
