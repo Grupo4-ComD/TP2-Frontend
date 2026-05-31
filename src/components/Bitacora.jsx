@@ -9,31 +9,68 @@ function Bitacora() {
         <p>Documentación técnica, evolución y arquitectura de nuestra SPA.</p>
       </header>
 
-      {/* NUEVO: Historial de Desarrollo con las fechas simuladas */}
-      <section className="bitacora-card" style={{ marginBottom: '20px' }}>
-        <h3>📅 Historial de Desarrollo</h3>
-        <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <li>
-            <strong style={{ color: 'var(--secondary-color)' }}>02/05/2026 - Planificación y Setup Inicial:</strong><br />
-            Nos reunimos para organizar la evolución de nuestro proyecto estático del TP1 hacia una arquitectura de componentes, transformándolo en una <em>Single Page Application</em> (SPA). Definimos el flujo de trabajo utilizando Trello para la asignación de módulos y la estrategia GitFlow en GitHub para no pisarnos el código al fusionar ramas. Inicializamos el entorno de trabajo usando Vite.
-          </li>
-          <li>
-            <strong style={{ color: 'var(--secondary-color)' }}>05/05/2026 - Refactorización de Portada y Perfiles:</strong><br />
-            Comenzamos a migrar la presentación del equipo. Braian se encargó de modernizar la grilla principal (<code>.team-grid</code>) y añadió animaciones avanzadas, incluyendo el "efecto vinilo" para su carrusel de discos. Mailén resolvió conflictos de diseño, ajustando los breakpoints y corrigiendo el menú hamburguesa. Verónica y Guillermo estructuraron los datos de sus perfiles dentro del objeto <code>TEAM_DATA</code> para que React los renderice dinámicamente.
-          </li>
-          <li>
-            <strong style={{ color: 'var(--secondary-color)' }}>08/05/2026 - Desarrollo de Módulos de Datos:</strong><br />
-            Nos enfocamos en la lógica asíncrona y de filtrado. Armamos el archivo <code>tecnologias.json</code> con los 20 objetos obligatorios y programamos el Buscador para que filtre en tiempo real usando el hook <code>useState</code>. Luego, implementamos el Módulo de la API Externa consumiendo los personajes de Rick and Morty, añadiendo la paginación y capturando los errores del servidor.
-          </li>
-          <li>
-            <strong style={{ color: 'var(--secondary-color)' }}>10/05/2026 - Galería Lightbox y UX:</strong><br />
-            Para cumplir con otro requerimiento obligatorio, construimos la Galería de Imágenes interactiva. Logramos aislar el estado del Lightbox para que las imágenes se amplíen con el fondo oscuro y respondan a las teclas de flechas y ESC. Braian sumó un efecto de carga simulado en terminal para optimizar la transición visual al entrar a cada perfil.
-          </li>
-          <li>
-            <strong style={{ color: 'var(--secondary-color)' }}>11/05/2026 - Bitácora, Árbol de Renderizado y Cierre:</strong><br />
-            Consolidamos el sistema de rutas con <code>react-router-dom</code> y dejamos lista esta Bitácora, incluyendo la justificación de nuestra migración a React y el esquema jerárquico del Árbol de Renderizado.
-          </li>
-        </ul>
+
+      {/* Historial de Desarrollo — Timeline */}
+      <section style={{ marginBottom: '20px' }}>
+        <h3 style={{ marginBottom: '20px' }}>📅 Historial de Desarrollo</h3>
+        <div className="bitacora-timeline">
+
+          <div className="timeline-entry">
+            <div className="timeline-dot" />
+            <div className="timeline-card">
+              <span className="timeline-date">02/05/2026</span>
+              <strong className="timeline-title">Planificación y Setup Inicial</strong>
+              <p>Nos reunimos para organizar la evolución de nuestro proyecto estático del TP1 hacia una arquitectura de componentes, transformándolo en una <em>Single Page Application</em> (SPA). Definimos el flujo de trabajo utilizando Trello para la asignación de módulos y la estrategia GitFlow en GitHub para no pisarnos el código al fusionar ramas. Inicializamos el entorno de trabajo usando Vite.</p>
+            </div>
+          </div>
+
+          <div className="timeline-entry">
+            <div className="timeline-dot" />
+            <div className="timeline-card">
+              <span className="timeline-date">05/05/2026</span>
+              <strong className="timeline-title">Refactorización de Portada y Perfiles</strong>
+              <p>Comenzamos a migrar la presentación del equipo. Braian se encargó de modernizar la grilla principal (<code>.team-grid</code>) y añadió animaciones avanzadas, incluyendo el "efecto vinilo" para su carrusel de discos. Mailén resolvió conflictos de diseño, ajustando los breakpoints y corrigiendo el menú hamburguesa. Verónica y Guillermo estructuraron los datos de sus perfiles dentro del objeto <code>TEAM_DATA</code> para que React los renderice dinámicamente.</p>
+            </div>
+          </div>
+
+          <div className="timeline-entry">
+            <div className="timeline-dot" />
+            <div className="timeline-card">
+              <span className="timeline-date">08/05/2026</span>
+              <strong className="timeline-title">Desarrollo de Módulos de Datos</strong>
+              <p>Nos enfocamos en la lógica asíncrona y de filtrado. Armamos el archivo <code>tecnologias.json</code> con los 20 objetos obligatorios y programamos el Buscador para que filtre en tiempo real usando el hook <code>useState</code>. Luego, implementamos el Módulo de la API Externa consumiendo los personajes de Rick and Morty, añadiendo la paginación y capturando los errores del servidor.</p>
+            </div>
+          </div>
+
+          <div className="timeline-entry">
+            <div className="timeline-dot" />
+            <div className="timeline-card">
+              <span className="timeline-date">10/05/2026</span>
+              <strong className="timeline-title">Galería Lightbox y UX</strong>
+              <p>Para cumplir con otro requerimiento obligatorio, construimos la Galería de Imágenes interactiva. Logramos aislar el estado del Lightbox para que las imágenes se amplíen con el fondo oscuro y respondan a las teclas de flechas y ESC. Braian sumó un efecto de carga simulado en terminal para optimizar la transición visual al entrar a cada perfil.</p>
+            </div>
+          </div>
+
+          <div className="timeline-entry">
+            <div className="timeline-dot" />
+            <div className="timeline-card">
+              <span className="timeline-date">11/05/2026</span>
+              <strong className="timeline-title">Bitácora, Árbol de Renderizado y Cierre</strong>
+              <p>Consolidamos el sistema de rutas con <code>react-router-dom</code> y dejamos lista esta Bitácora, incluyendo la justificación de nuestra migración a React y el esquema jerárquico del Árbol de Renderizado. Deploy final en Vercel con configuración de SPA.</p>
+            </div>
+          </div>
+
+          <div className="timeline-entry timeline-entry--latest">
+            <div className="timeline-dot timeline-dot--latest" />
+            <div className="timeline-card">
+              <span className="timeline-date">31/05/2026</span>
+              <strong className="timeline-title">Revisión Técnica y Pulido Visual</strong>
+              <p>Se realizó una revisión integral del proyecto: corrección del <code>README.md</code> (estructura de carpetas actualizada) y corrección de la ruta del árbol de componentes, donde <code>LocalDataExplorer</code> figuraba incorrectamente como <code>/json</code> en lugar de <code>/explorador</code>. Se realizó un retoque general de efectos visuales en todo el proyecto, incorporando animaciones y transiciones puramente en CSS: <em>aurora shimmer</em> animado en el brand de la sidebar, efecto <em>tilt 3D</em> en las tarjetas del dashboard, <em>glow</em> en el ítem de navegación activo, animaciones de pulso en los nodos del árbol de componentes y hover con borde deslizante en las tarjetas de esta bitácora.</p>
+            </div>
+          </div>
+
+
+        </div>
       </section>
 
       <div className="bitacora-grid">
@@ -91,7 +128,7 @@ function Bitacora() {
                           <span className="node view">ExternalApi.jsx (Ruta "/api")</span>
                           <ul><li><span className="node leaf">Paginación y Tarjetas API</span></li></ul>
                         </li>
-                        <li><span className="node view">LocalDataExplorer.jsx (Ruta "/json")</span></li>
+                        <li><span className="node view">LocalDataExplorer.jsx (Ruta "/explorador")</span></li>
                         <li>
                           <span className="node view">ImageGallery.jsx (Ruta "/galeria")</span>
                           <ul><li><span className="node leaf">Lightbox (Modal Interactivo)</span></li></ul>

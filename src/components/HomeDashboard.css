@@ -51,14 +51,18 @@
   background: var(--surface-2);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease;
   opacity: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .member-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-  border-color: rgba(96, 165, 250, 0.28);
+  transform: perspective(700px) rotateX(-3deg) rotateY(4deg) translateY(-6px) scale(1.02);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(96, 165, 250, 0.35);
+  border-color: rgba(96, 165, 250, 0.4);
 }
 
 .avatar-frame {

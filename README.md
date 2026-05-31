@@ -27,12 +27,13 @@ La arquitectura del proyecto sigue las buenas prácticas de React y Vite:
 ├── public/
 │   └── img/               # Recursos estáticos, avatares e imágenes de proyectos
 ├── src/
-│   ├── components/        # Componentes reutilizables (Layout, Sidebar, Cards)
-│   ├── pages/             # Vistas principales (Home, Perfiles, Galería, Bitácora)
+│   ├── components/        # Componentes y vistas principales (Layout, Perfiles, Galería, Bitácora, etc.)
+│   ├── data/              # Datos locales en JSON (tecnologias.json)
 │   ├── App.jsx            # Configuración principal de React Router
 │   ├── main.jsx           # Punto de entrada de la aplicación
-│   └── index.css          # Estilos globales y variables de Modo Oscuro
+│   └── index.css          # Estilos globales y variables de Modo Oscuro/Claro
 ├── index.html             # Plantilla base
+├── vercel.json            # Configuración de deploy para SPA en Vercel
 └── package.json           # Dependencias del proyecto
 ```
 

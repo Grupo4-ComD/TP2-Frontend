@@ -21,14 +21,149 @@
   gap: 20px;
 }
 
+/* --- TIMELINE DE HISTORIAL --- */
+.bitacora-timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 28px;
+}
+
+.bitacora-timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary-2, #60a5fa), rgba(96, 165, 250, 0.15));
+  border-radius: 2px;
+}
+
+.timeline-entry {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.timeline-entry:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -25px;
+  top: 14px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary-2, #60a5fa);
+  border: 2px solid var(--bg1, #0b1020);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+  z-index: 1;
+}
+
+.timeline-dot--latest {
+  background: var(--primary, #22c55e);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25), 0 0 10px rgba(34, 197, 94, 0.4);
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25), 0 0 10px rgba(34, 197, 94, 0.3); }
+  50%       { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.15), 0 0 18px rgba(34, 197, 94, 0.5); }
+}
+
+.timeline-card {
+  background: var(--surface-2, #ffffff);
+  border: 1px solid var(--border, #e2e8f0);
+  border-left: 3px solid var(--primary-2, #60a5fa);
+  border-radius: var(--radius, 12px);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.timeline-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-soft), -4px 0 16px rgba(96, 165, 250, 0.12);
+}
+
+.timeline-entry--latest .timeline-card {
+  border-left-color: var(--primary, #22c55e);
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), rgba(96, 165, 250, 0.04));
+}
+
+.timeline-entry--latest .timeline-card:hover {
+  box-shadow: var(--shadow-soft), -4px 0 16px rgba(34, 197, 94, 0.15);
+}
+
+.timeline-date {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--primary-2, #60a5fa);
+  text-transform: uppercase;
+}
+
+.timeline-entry--latest .timeline-date {
+  color: var(--primary, #22c55e);
+}
+
+.timeline-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--primary, #22c55e);
+  color: #071018;
+  width: fit-content;
+}
+
+.timeline-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.timeline-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
+.timeline-card code {
+  font-size: 0.85em;
+  background: var(--surface);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: var(--primary-2);
+}
+
+/* --- BITACORA CARD (secciones inferiores) --- */
 .bitacora-card {
   background: var(--surface-2, #ffffff);
   border: 1px solid var(--border, #e2e8f0);
+  border-left: 3px solid transparent;
   border-radius: var(--radius, 12px);
   padding: 24px;
   box-shadow: var(--shadow-soft, 0 4px 6px -1px rgba(0,0,0,0.1));
   color: var(--text, #333);
+  transition: border-left-color 0.35s ease,
+              box-shadow 0.35s ease,
+              transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+.bitacora-card:hover {
+  border-left-color: var(--primary-2, #60a5fa);
+  box-shadow: var(--shadow-soft), -4px 0 18px rgba(96, 165, 250, 0.15);
+  transform: translateX(3px);
+}
+
 
 .bitacora-card h3 {
   color: var(--primary-color);
@@ -103,7 +238,24 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.node.root { background-color: #ef4444; color: white; }
-.node.layout { background-color: #f59e0b; color: white; }
-.node.view { background-color: #3b82f6; color: white; }
-.node.leaf { background-color: #10b981; color: white; }
+.node.root   { background-color: #ef4444; color: white; animation: pulse-root   2.8s ease-in-out infinite; }
+.node.layout { background-color: #f59e0b; color: white; animation: pulse-layout 3.2s ease-in-out infinite; }
+.node.view   { background-color: #3b82f6; color: white; animation: pulse-view   3.6s ease-in-out infinite; }
+.node.leaf   { background-color: #10b981; color: white; animation: pulse-leaf   3.0s ease-in-out infinite; }
+
+@keyframes pulse-root {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+  50%       { box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.25); }
+}
+@keyframes pulse-layout {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+  50%       { box-shadow: 0 0 0 5px rgba(245, 158, 11, 0.25); }
+}
+@keyframes pulse-view {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+  50%       { box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.25); }
+}
+@keyframes pulse-leaf {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  50%       { box-shadow: 0 0 0 5px rgba(16, 185, 129, 0.25); }
+}
