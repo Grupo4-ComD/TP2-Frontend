@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import './UserProfile.css';
 
+
 const TEAM_DATA = {
     guillermo: {
       name: 'Guillermo Sciulli',
@@ -85,6 +86,7 @@ const TEAM_DATA = {
 function ProfileView({ id }) {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
+  const [imagenAmpliada, setImagenAmpliada] = useState(null); 
   const [terminalLines, setTerminalLines] = useState(() => [`> npm run profile -- --id=${id}`]);
   const [skillsAnimated, setSkillsAnimated] = useState(false);
   const [skillsHover, setSkillsHover] = useState(false);
@@ -444,12 +446,16 @@ function ProfileView({ id }) {
                   : undefined
               }
             >
-              <img 
-                key={currentSlide}
-                src={profileData.projects[currentSlide].img} 
-                alt={profileData.projects[currentSlide].title} 
-                className="carousel-img"
-              />
+        <img 
+          className="carousel-img"
+          src={profileData.projects[currentSlide].img} 
+          alt={profileData.projects[currentSlide].title} 
+          style={{ cursor: 'pointer', position: 'relative', zIndex: 50 }}
+          onClick={() => {
+            console.log("¡Clic exitoso en el proyecto!", profileData.projects[currentSlide].img);
+            setImagenAmpliada(profileData.projects[currentSlide].img);
+          }}
+        />
               <p className="carousel-caption">{profileData.projects[currentSlide].title}</p>
             </div>
             <button onClick={nextSlide} className="carousel-btn">❯</button>
@@ -462,6 +468,21 @@ function ProfileView({ id }) {
         <a href="#" className="social-btn">LinkedIn</a>
         <a href="#" className="social-btn">Email</a>
       </section>
+
+
+
+{imagenAmpliada && (
+        <div 
+          className="modal-lightbox" 
+          style={{ display: 'flex' }} 
+          onClick={() => setImagenAmpliada(null)}
+        >
+          <span className="cerrar-modal" onClick={() => setImagenAmpliada(null)}>&times;</span>
+          <img className="modal-contenido" src={imagenAmpliada} alt="Proyecto ampliado" />
+        </div>
+      )}
+
+
     </div>
   );
 }
