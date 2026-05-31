@@ -51,51 +51,55 @@ function ImageGallery() {
   }, [currentIndex]); // Se vuelve a ejecutar si cambia la imagen actual
 
   return (
-    <div className="gallery-module fade-in-up">
-      <header className="gallery-header">
-        <h2>Galería Interactiva</h2>
-        <p>Visualizador tipo Grid con funcionalidad de Lightbox (Usa las flechas y la tecla ESC).</p>
-      </header>
+    <>
+      {/* 1. CONTENEDOR PRINCIPAL DE LA GALERÍA (CON LA ANIMACIÓN) */}
+      <div className="gallery-module fade-in-up">
+        <header className="gallery-header">
+          <h2>Galería Interactiva</h2>
+          <p>Visualizador tipo Grid con funcionalidad de Lightbox (Usa las flechas y la tecla ESC).</p>
+        </header>
 
-      {/* Grilla principal de imágenes */}
-      <section className="gallery-grid">
-        {images.map((img, index) => (
-          <div 
-            key={img.id} 
-            className="gallery-item" 
-            style={{ '--delay': `${randomOrders[index]}s` }}
-            onClick={() => openLightbox(index)}
-          >
-            <img src={img.src} alt={img.alt} loading="lazy" />
-            <div className="gallery-overlay">
-              <span>🔍 Ampliar</span>
+        {/* Mapeo de la grilla de imágenes */}
+        <div className="gallery-grid">
+          {images.map((image, index) => (
+            <div 
+              key={image.id} 
+              className="gallery-item" 
+              onClick={() => openLightbox(index)}
+            >
+              <img src={image.src} alt={image.alt} />
             </div>
-          </div>
-        ))}
-      </section>
+          ))}
+        </div>
+      </div> {/* <--- AQUÍ SE CIERRA EL CONTENEDOR ANIMADO */}
 
-      {/* Lightbox (Renderizado Condicional) */}
+
+      {/* 2. MODAL LIGHTBOX (TOTALMENTE INDEPENDIENTE PARA NO PERDER EL FIXED) */}
       {currentIndex !== null && (
-        <div className="lightbox-overlay" onClick={closeLightbox}>
-          <button className="lightbox-close" onClick={closeLightbox}>✖</button>
+        <div 
+          className="modal-lightbox" 
+          style={{ display: 'flex' }} 
+          onClick={closeLightbox}
+        >
+          {/* Botón Cerrar */}
+          <span className="cerrar-modal" onClick={closeLightbox}>&times;</span>
           
-          <button className="lightbox-btn left" onClick={showPrev}>❮</button>
-          
-          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <img 
-              src={images[currentIndex].src} 
-              alt={images[currentIndex].alt} 
-              className="lightbox-img"
-            />
-            <p className="lightbox-caption">
-              {images[currentIndex].alt} ({currentIndex + 1} / {images.length})
-            </p>
-          </div>
+          {/* Botón Anterior */}
+          <button className="lightbox-nav prev" onClick={showPrev}>&#10094;</button>
 
-          <button className="lightbox-btn right" onClick={showNext}>❯</button>
+          {/* Imagen Central Ampliada */}
+          <img 
+            className="modal-contenido" 
+            src={images[currentIndex].src} 
+            alt={images[currentIndex].alt} 
+            onClick={(e) => e.stopPropagation()} /* Evita que al hacer clic en la foto se cierre el modal */
+          />
+
+          {/* Botón Siguiente */}
+          <button className="lightbox-nav next" onClick={showNext}>&#10095;</button>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
