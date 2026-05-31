@@ -31,6 +31,12 @@
 .theme-braian {
   --bg-color: #0b0f1a;
   --text-color: #e6f1ff;
+  --text: #e6f1ff;
+  --muted: rgba(230, 241, 255, 0.7);
+  --muted-2: rgba(230, 241, 255, 0.55);
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-2: rgba(255, 255, 255, 0.085);
+  --border: rgba(255, 255, 255, 0.09);
   --card-bg: #131a2b;
   --primary-color: #00e5ff;
   --secondary-color: #7a29ff;
@@ -72,6 +78,15 @@ body.dark-mode .theme-guillermo {
   max-width: 900px;
   margin: 0 auto;
   color: var(--text);
+  overflow-x: hidden; /* Evita cualquier desborde horizontal (ej: animaciones o fondos largos) */
+  padding: 30px;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .profile-container {
+    padding: 20px 15px;
+  }
 }
 
 .btn-back {
@@ -129,7 +144,8 @@ body.dark-mode .theme-guillermo {
 
 .profile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* El min() asegura que en pantallas menores a 300px (móviles chicos) no haya desborde */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 30px;
   margin-bottom: 30px;
 }
@@ -550,7 +566,8 @@ body.dark-mode .theme-guillermo {
   border-radius: 12px;
   box-shadow: var(--shadow-soft);
   animation: imageFade 0.45s ease;
-  object-fit: cover;
+  object-fit: contain;
+  background-color: var(--surface-2); /* Añadido un fondo suave por si la imagen no ocupa el 100% del cuadro */
 }
 
 .theme-braian .carousel-img {
@@ -626,6 +643,7 @@ body.dark-mode .theme-guillermo {
 /* === BOTONES SOCIALES === */
 .social-section {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   margin-top: 30px;

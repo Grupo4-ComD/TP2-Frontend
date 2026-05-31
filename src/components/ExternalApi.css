@@ -234,31 +234,6 @@
   border-top: 1px solid var(--border);
 }
 
-.btn-page {
-  background-color: var(--secondary-color);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: opacity 0.2s ease;
-}
-
-.btn-page:hover:not(:disabled) {
-  opacity: 0.9;
-}
-
-.btn-page:disabled {
-  background-color: var(--border);
-  color: var(--muted);
-  cursor: not-allowed;
-}
-
-.page-indicator {
-  font-size: 14px;
-  color: var(--text);
-}
 
 /* Estados de Carga y Error */
 .api-status {
@@ -273,4 +248,40 @@
 
 .api-status.error {
   color: #ef4444;
+}
+
+
+
+/* =========================================
+   BOTONES DE PAGINACIÓN (API)
+========================================= */
+.btn-page {
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--primary-2);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 10px;
+}
+
+.btn-page:hover:not(:disabled) {
+  background: var(--primary-2);
+  color: #071018;
+  border-color: var(--primary-2);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-page:disabled {
+  background-color: var(--surface);
+  color: var(--muted-2);
+  border-color: var(--border);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
 }
