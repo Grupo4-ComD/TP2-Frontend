@@ -24,7 +24,7 @@ function HomeDashboard() {
     },
     {
       id: 'braian',
-      name: 'Braian Perera',
+      name: 'Braian Perea',
       role: 'Desarrollador Web',
       bio: 'Datos, gaming y programación. Tableros claros y dinámicos.',
       avatar: '/img/avatar-braian.png',
