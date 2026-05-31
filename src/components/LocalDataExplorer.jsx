@@ -30,11 +30,16 @@ function LocalDataExplorer() {
         onChange={(e) => setBusqueda(e.target.value)}
       />
 
-      {/* Grilla de resultados */}
+            {/* Grilla de resultados */}
       <div className="data-grid">
         {datosFiltrados.length > 0 ? (
           datosFiltrados.map((item, index) => (
-            <div key={item.id} className="data-card" style={{ '--i': index }}>
+            <div 
+              key={item.id} 
+              className="data-card" 
+              /*  Aplicamos el delay en cascada directamente con React  */
+              style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'both' }}
+            >
               <h3>{item.nombre}</h3>
               <p><strong>Tipo:</strong> {item.tipo}</p>
               <span className="badge">{item.rol}</span>
