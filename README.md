@@ -27,8 +27,8 @@ La arquitectura del proyecto sigue las buenas prácticas de React y Vite:
 ├── public/
 │   └── img/               # Recursos estáticos, avatares e imágenes de proyectos
 ├── src/
-│   ├── components/        # Componentes y vistas principales (Layout, Perfiles, Galería, Bitácora, etc.)
-│   ├── data/              # Datos locales en JSON (tecnologias.json)
+│   ├── components/        # Componentes reutilizables (Layout, Sidebar, Cards)
+│   ├── pages/             # Vistas principales (Home, Perfiles, Galería, Bitácora)
 │   ├── App.jsx            # Configuración principal de React Router
 │   ├── main.jsx           # Punto de entrada de la aplicación
 │   └── index.css          # Estilos globales y variables de Modo Oscuro/Claro
