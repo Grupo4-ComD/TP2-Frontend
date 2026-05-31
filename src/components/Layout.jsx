@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import FootprintsBackground from "./FootprintsBackground";
 
 function Layout({ children }) {
   const [theme, setTheme] = useState(() => {
@@ -147,6 +148,8 @@ function Layout({ children }) {
 
       {/* Div vacío que se usa para oscurecer el fondo */}
       <div className="mobile-overlay" onClick={closeMenu}></div>
+
+      <FootprintsBackground />
 
       <main className="app-main">
         <div className="app-content">{children}</div>
