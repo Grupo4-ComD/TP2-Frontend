@@ -109,8 +109,10 @@ function Layout({ children }) {
         <div className="sidebar-top">
           <div className="brand">
             <img className="brand-logo" src="/img/logodev.jpeg" alt="Logo Dev" />
-            <div className="brand-title">Grupo 4</div>
-            <div className="brand-subtitle">TP2 • React</div>
+            <div className="brand-text">
+              <div className="brand-title">Grupo 4</div>
+              <div className="brand-subtitle">TP2 • React</div>
+            </div>
           </div>
           <button
             type="button"
