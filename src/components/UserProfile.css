@@ -491,12 +491,43 @@ body.dark-mode .theme-guillermo {
     rgba(0, 229, 255, 0.18) 62%,
     rgba(0, 0, 0, 0) 80%
   );
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.045) 0,
+      rgba(255, 255, 255, 0.045) 1px,
+      rgba(0, 0, 0, 0) 1px,
+      rgba(0, 0, 0, 0) 5px
+    ),
+    linear-gradient(
+      115deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 229, 255, 0.18) 28%,
+      rgba(122, 41, 255, 0.16) 48%,
+      rgba(0, 229, 255, 0.18) 62%,
+      rgba(0, 0, 0, 0) 80%
+    );
   background-size: 220% 100%;
-  background-position: 0% 0%;
+  background-position: 0 0, 0% 0%;
   filter: saturate(1.1);
   transition: opacity 260ms ease, background-position 520ms ease;
   pointer-events: none;
   z-index: 2;
+}
+
+.theme-braian .carousel-content:hover::before,
+.theme-braian .carousel-content:focus-within::before {
+  opacity: 1;
+  transform: scale(1.006);
+  box-shadow:
+    0 0 0 1px rgba(0, 229, 255, 0.35),
+    0 0 0 6px rgba(122, 41, 255, 0.12);
+}
+
+.theme-braian .carousel-content:hover::after,
+.theme-braian .carousel-content:focus-within::after {
+  opacity: 0.75;
+  animation: braian-scan 1.35s ease-in-out infinite;
 }
 
 .theme-braian .carousel-content.is-clickfx::before {
@@ -509,7 +540,8 @@ body.dark-mode .theme-guillermo {
 
 .theme-braian .carousel-content.is-clickfx::after {
   opacity: 1;
-  background-position: 100% 0%;
+  animation: braian-scan 700ms ease-in-out 1;
+  background-position: 0 0, 100% 0%;
 }
 
 .carousel-img {
@@ -564,9 +596,24 @@ body.dark-mode .theme-guillermo {
   }
 }
 
+@keyframes braian-scan {
+  0% {
+    background-position: 0 0, 0% 0%;
+  }
+  100% {
+    background-position: 0 44px, 100% 0%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .theme-braian .carousel-content.is-clickfx .carousel-img {
     transition-duration: 80ms;
+  }
+
+  .theme-braian .carousel-content:hover::after,
+  .theme-braian .carousel-content:focus-within::after,
+  .theme-braian .carousel-content.is-clickfx::after {
+    animation: none;
   }
 }
 
