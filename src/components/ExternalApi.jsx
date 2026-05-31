@@ -8,14 +8,18 @@ function ExternalApi() {
   
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [isPageChanging, setIsPageChanging] = useState(false);
   
   // NUEVO: Estado para forzar un reintento si la API falla
   const [retryTrigger, setRetryTrigger] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
+      const startedAt = Date.now();
+      const minLoadingMs = 800;
       setIsLoading(true); 
       setError(null);     
+      setIsPageChanging(false);
 
       try {
         const response = await fetch(`https://rickandmortyapi.com/api/character?page=${currentPage}`);
@@ -30,6 +34,11 @@ function ExternalApi() {
       } catch (err) {
         setError(err.message); 
       } finally {
+        const elapsed = Date.now() - startedAt;
+        const remaining = Math.max(0, minLoadingMs - elapsed);
+        if (remaining > 0) {
+          await new Promise((resolve) => setTimeout(resolve, remaining));
+        }
         setIsLoading(false); 
       }
     };
@@ -39,11 +48,19 @@ function ExternalApi() {
   }, [currentPage, retryTrigger]); 
 
   const handlePrevPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+    if (isLoading) return;
+    if (currentPage > 1) {
+      setIsPageChanging(true);
+      setTimeout(() => setCurrentPage((p) => p - 1), 180);
+    }
   };
 
   const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    if (isLoading) return;
+    if (currentPage < totalPages) {
+      setIsPageChanging(true);
+      setTimeout(() => setCurrentPage((p) => p + 1), 180);
+    }
   };
 
   return (
@@ -54,6 +71,10 @@ function ExternalApi() {
       </header>
 
       <section className="api-panel">
+        <div className="api-topbar" aria-hidden="true">
+          <div className={isLoading ? 'api-loadingbar is-active' : 'api-loadingbar'} />
+        </div>
+
         {isLoading && !error && (
           <>
             <div className="api-grid" aria-label="Cargando resultados">
@@ -96,9 +117,13 @@ function ExternalApi() {
 
         {!isLoading && !error && (
           <>
-            <div className="api-grid">
-              {characters.map(char => (
-                <article key={char.id} className="api-card">
+            <div className={isPageChanging ? 'api-grid is-leaving' : 'api-grid'}>
+              {characters.map((char, index) => (
+                <article
+                  key={`${currentPage}-${char.id}`}
+                  className="api-card api-card--enter"
+                  style={{ animationDelay: `${index * 45}ms` }}
+                >
                   <img src={char.image} alt={char.name} loading="lazy" />
                   <div className="api-card-body">
                     <h3>{char.name}</h3>
