@@ -350,6 +350,7 @@ function ProfileView({ id }) {
   }
 
   return (
+    <>
     <div className={`profile-container theme-${id} fade-in-up`}>
       <Link to="/" className="btn-back">⬅ Volver al Dashboard</Link>
       
@@ -469,7 +470,7 @@ function ProfileView({ id }) {
         <a href="#" className="social-btn">Email</a>
       </section>
 
-
+ </div>
 
 {imagenAmpliada && (
         <div 
@@ -482,8 +483,8 @@ function ProfileView({ id }) {
         </div>
       )}
 
-
-    </div>
+</>
+   
   );
 }
 
