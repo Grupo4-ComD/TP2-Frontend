@@ -31,12 +31,6 @@
 .theme-braian {
   --bg-color: #0b0f1a;
   --text-color: #e6f1ff;
-  --text: #e6f1ff;
-  --muted: rgba(230, 241, 255, 0.7);
-  --muted-2: rgba(230, 241, 255, 0.55);
-  --surface: rgba(255, 255, 255, 0.06);
-  --surface-2: rgba(255, 255, 255, 0.085);
-  --border: rgba(255, 255, 255, 0.09);
   --card-bg: #131a2b;
   --primary-color: #00e5ff;
   --secondary-color: #7a29ff;
@@ -51,6 +45,13 @@
   background-position: center, center, center, center;
   background-attachment: fixed, fixed, fixed, fixed;
   background-blend-mode: screen, screen, soft-light, overlay;
+}
+
+/* Permitir que el perfil de Braian pase a modo claro correctamente */
+:root[data-theme='light'] .theme-braian {
+  background-color: transparent;
+  background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+  background-blend-mode: normal;
 }
 .theme-braian .progress-bar-fill {
   box-shadow: 0 0 10px #00e5ff; 
