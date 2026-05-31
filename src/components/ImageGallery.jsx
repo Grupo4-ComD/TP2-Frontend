@@ -65,6 +65,7 @@ function ImageGallery() {
             <div 
               key={image.id} 
               className="gallery-item" 
+               style={{ animationDelay: `${randomOrders[index]}s`, animationFillMode: 'both' }}
               onClick={() => openLightbox(index)}
             >
               <img src={image.src} alt={image.alt} />
