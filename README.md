@@ -67,7 +67,7 @@ Vista detallada de cada perfil con habilidades técnicas, tech stack y carrusel 
 ### ● Buscador JSON en Tiempo Real
 Filtrado dinámico activo sobre 20 objetos locales con actualización instantánea.
 
-<img width="1609" height="916" alt="Captura de pantalla 2026-05-30 145609" src="https://github.com/user-attachments/assets/f54c14a4-1d1e-4096-aff1-eca0cc071223" />
+<img width="1609" height="916" alt="Captura de pantalla 2026-05-30 145609" src="https://github.com/Grupo4-ComD/TP2-Frontend/blob/main/public/img/b2.jpg" />
 
 ### ● API Externa con Paginación
 Consumo asíncrono de la API de Rick and Morty con sistema de navegación por páginas.
@@ -83,7 +83,7 @@ Visualizador tipo Grid con funcionalidad Lightbox, navegación con flechas y cie
 ### ● Bitácora del Proyecto
 Documentación técnica con historial de desarrollo, roles y justificación de migración a React.
 
-<img width="1614" height="981" alt="Captura de pantalla 2026-05-30 163655" src="https://github.com/user-attachments/assets/32dcaf50-9531-4b2b-94bc-4a777b467b58" />
+<img width="1614" height="981" alt="Captura de pantalla 2026-05-30 163655" src="https://github.com/Grupo4-ComD/TP2-Frontend/blob/main/public/img/b1.jpg" />
 
 
 ## 📈 Evolución del Proyecto (Migración TP1 a TP2)
